@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  /* Red-themed color system */
+  --primary: #D7263D;
+  --primaryDark: #8B1B2A;
+  --primarySoft: #FFE4E7;
+  --accent: #FF4D5A;
+  --bgDark: #050608;
+  --bg: #0F1013;
+  --bgLight: #F7F7F9;
+  --textMain: #111827;
+  --textMuted: #6B7280;
+  --borderSubtle: #E5E7EB;
+  
+  /* Legacy compatibility */
+  --background: #FFFFFF;
+  --foreground: var(--textMain);
+  --card: #FFFFFF;
+  --card-foreground: var(--textMain);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--textMain);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--bgLight);
+  --secondary-foreground: var(--textMain);
+  --muted: var(--bgLight);
+  --muted-foreground: var(--textMuted);
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: var(--borderSubtle);
+  --input: var(--borderSubtle);
+  --ring: var(--primary);
+  
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: var(--font-noto-serif-jp), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* Spacing & Shadows */
+  --radius: 0.75rem;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-red: 0 10px 40px -10px rgba(215, 38, 61, 0.3);
+  --shadow-red-lg: 0 20px 60px -15px rgba(215, 38, 61, 0.4);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primaryDark: var(--primaryDark);
+  --color-primarySoft: var(--primarySoft);
+  --color-accent: var(--accent);
+  --color-bgDark: var(--bgDark);
+  --color-bg: var(--bg);
+  --color-bgLight: var(--bgLight);
+  --color-textMain: var(--textMain);
+  --color-textMuted: var(--textMuted);
+  --color-borderSubtle: var(--borderSubtle);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  
+  --font-sans: var(--font-sans), var(--font-noto-sans-jp);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
+  --radius-3xl: calc(var(--radius) + 24px);
+  
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-red: var(--shadow-red);
+  --shadow-red-lg: var(--shadow-red-lg);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), var(--font-noto-sans-jp), system-ui, -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Floating animation for background elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 25s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(5, 6, 8, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium button styles */
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-red);
+}
+
+.btn-primary:hover {
+  background: var(--primaryDark);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-red-lg);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-foreground);
+  padding: 0.875rem 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl), var(--shadow-red);
+}
+
+/* Scroll indicator */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-scroll-bounce {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Utility classes */
+@layer utilities {
+  .bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .bg-primaryDark {
+    background-color: var(--primaryDark) !important;
+  }
+  
+  .bg-primarySoft {
+    background-color: var(--primarySoft) !important;
+  }
+  
+  .bg-bgDark {
+    background-color: var(--bgDark) !important;
+  }
+  
+  .bg-bg {
+    background-color: var(--bg) !important;
+  }
+  
+  .bg-bgLight {
+    background-color: var(--bgLight) !important;
+  }
+  
+  .text-primary {
+    color: var(--primary) !important;
+  }
+  
+  .text-primaryDark {
+    color: var(--primaryDark) !important;
+  }
+  
+  .text-textMain {
+    color: var(--textMain) !important;
+  }
+  
+  .text-textMuted {
+    color: var(--textMuted) !important;
+  }
+  
+  .border-borderSubtle {
+    border-color: var(--borderSubtle) !important;
+  }
+  
+  .shadow-red {
+    box-shadow: var(--shadow-red) !important;
+  }
+  
+  .shadow-red-lg {
+    box-shadow: var(--shadow-red-lg) !important;
+  }
+}
