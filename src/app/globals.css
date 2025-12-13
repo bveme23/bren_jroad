@@ -1,44 +1,61 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Red-themed color system */
-  --primary: #D7263D;
-  --primaryDark: #8B1B2A;
-  --primarySoft: #FFE4E7;
-  --accent: #FF4D5A;
-  --bgDark: #050608;
-  --bg: #0F1013;
-  --bgLight: #F7F7F9;
-  --textMain: #111827;
-  --textMuted: #6B7280;
-  --borderSubtle: #E5E7EB;
+  /* Japanese Aesthetic Design System - Red Primary */
+  --primary: #dc2626;
+  --primary-foreground: #ffffff;
+  --primaryDark: #b91c1c;
+  --primarySoft: #fef2f2;
+  --accent: #dc2626;
+  --accent-foreground: #ffffff;
   
-  /* Legacy compatibility */
-  --background: #FFFFFF;
-  --foreground: var(--textMain);
-  --card: #FFFFFF;
-  --card-foreground: var(--textMain);
-  --popover: #FFFFFF;
-  --popover-foreground: var(--textMain);
-  --primary-foreground: #FFFFFF;
-  --secondary: var(--bgLight);
-  --secondary-foreground: var(--textMain);
-  --muted: var(--bgLight);
-  --muted-foreground: var(--textMuted);
-  --accent-foreground: #FFFFFF;
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --border: var(--borderSubtle);
-  --input: var(--borderSubtle);
-  --ring: var(--primary);
+  /* Background colors */
+  --background: #ffffff;
+  --foreground: #000000;
+  --bgDark: #000000;
+  --bg: #ffffff;
+  --bgLight: #f5f5f5;
+  
+  /* Text colors */
+  --textMain: #000000;
+  --textMuted: #666666;
+  
+  /* Card colors */
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  
+  /* Secondary colors */
+  --secondary: #000000;
+  --secondary-foreground: #ffffff;
+  --muted: #f5f5f5;
+  --muted-foreground: #666666;
+  
+  /* Destructive */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  
+  /* Border and input */
+  --border: #e5e5e5;
+  --borderSubtle: #e5e5e5;
+  --input: transparent;
+  --input-background: #f5f5f5;
+  --ring: #dc2626;
   
   /* Fonts */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: var(--font-noto-serif-jp), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Noto Serif JP', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
   
   /* Spacing & Shadows */
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -53,7 +70,9 @@
   --color-primary: var(--primary);
   --color-primaryDark: var(--primaryDark);
   --color-primarySoft: var(--primarySoft);
+  --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-bgDark: var(--bgDark);
   --color-bg: var(--bg);
   --color-bgLight: var(--bgLight);
@@ -65,19 +84,27 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
   
-  --font-sans: var(--font-sans), var(--font-noto-sans-jp);
+  --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
   
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 8px);
-  --radius-2xl: calc(var(--radius) + 16px);
-  --radius-3xl: calc(var(--radius) + 24px);
+  --radius-xl: calc(var(--radius) + 4px);
   
   --shadow-sm: var(--shadow-sm);
   --shadow: var(--shadow);
@@ -92,10 +119,9 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), var(--font-noto-sans-jp), system-ui, -apple-system, BlinkMacSystemFont,
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
     "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.7;
-  letter-spacing: 0.01em;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -149,41 +175,56 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Premium button styles */
+/* Premium button styles - Japanese Aesthetic */
 .btn-primary {
   background: var(--primary);
   color: var(--primary-foreground);
   padding: 0.875rem 2rem;
   border-radius: var(--radius-lg);
-  font-weight: 600;
-  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  font-size: 1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-red);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary:hover {
-  background: var(--primaryDark);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--shadow-red-lg);
+  background: #b91c1c;
+  box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3), 0 4px 6px -4px rgba(220, 38, 38, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--primary-foreground);
+  background: var(--secondary);
+  color: var(--secondary-foreground);
   padding: 0.875rem 2rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--secondary);
   border-radius: var(--radius-lg);
-  font-weight: 600;
-  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  font-size: 1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
 }
 
 /* Card hover effects */
@@ -208,6 +249,36 @@ html {
 
 .animate-scroll-bounce {
   animation: bounce 2s ease-in-out infinite;
+}
+
+/* Pulse animation for decorative elements */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
 }
 
 /* Utility classes */

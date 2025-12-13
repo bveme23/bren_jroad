@@ -41,119 +41,159 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
   });
   
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-bgDark via-primaryDark to-bgDark">
-      {/* Animated background orbs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-float-delayed" />
+    <section className="relative h-[700px] flex items-center justify-center overflow-hidden bg-black">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        {backgroundImage && (
+          <div
+            className="w-full h-full object-cover opacity-50"
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            aria-hidden="true"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
       </div>
-      
-      {/* Background image overlay */}
-      {backgroundImage && (
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-          aria-hidden="true"
-        />
-      )}
-      
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Text Content */}
-          <div className="text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block mb-6 px-4 py-1.5 rounded-full bg-primary/20 text-white text-sm font-semibold tracking-wider border border-primary/30">
-                J-Road
-              </span>
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-snug"
-            >
-              {titleWithBreaks}
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-            >
-              {subtitle}
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <Link
-                href={ctaPrimary.link}
-                className="btn-primary text-center"
-              >
-                {ctaPrimary.text}
-              </Link>
-              {ctaSecondary && (
-                <Link
-                  href={ctaSecondary.link}
-                  className="btn-secondary text-center"
-                >
-                  {ctaSecondary.text}
-                </Link>
-              )}
-            </motion.div>
+
+      {/* Red Accent Border Top */}
+      <div className="absolute top-0 left-0 right-0 h-2 bg-primary"></div>
+
+      {/* Decorative Japanese Pattern Elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 border-2 border-primary/20 rounded-lg rotate-45"></div>
+      <div className="absolute bottom-20 right-10 w-24 h-24 border-2 border-primary/20 rounded-lg -rotate-12"></div>
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        {/* Logo with enhanced styling */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-10 animate-fade-in"
+        >
+          <div className="inline-block relative">
+            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+            <img 
+              src="/logo.png?v=2" 
+              alt="J-Road Logo" 
+              className="h-36 sm:h-48 w-auto mx-auto drop-shadow-2xl relative z-10" 
+            />
           </div>
-          
-          {/* Right: Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex items-center justify-center"
+        </motion.div>
+        
+        {/* Main Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-white mb-6 text-4xl sm:text-5xl lg:text-6xl leading-tight"
+        >
+          {titleLines.map((line, index) => {
+            if (line.includes(keyPhrase)) {
+              const titleParts = line.split(keyPhrase);
+              return (
+                <span key={index}>
+                  {titleParts[0]}
+                  <span className="text-primary block sm:inline mt-2 sm:mt-0">
+                    {keyPhrase}
+                  </span>
+                  {titleParts[1]}
+                  {index < titleLines.length - 1 && <br />}
+                </span>
+              );
+            }
+            return (
+              <span key={index}>
+                {line}
+                {index < titleLines.length - 1 && <br />}
+              </span>
+            );
+          })}
+        </motion.h1>
+
+        {/* Divider */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center mb-6"
+        >
+          <div className="w-16 h-0.5 bg-white/30"></div>
+          <span className="mx-4 text-primary text-2xl">◆</span>
+          <div className="w-16 h-0.5 bg-white/30"></div>
+        </motion.div>
+        
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-white/90 text-lg sm:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed"
+        >
+          {subtitle}
+        </motion.p>
+        
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <Link
+            href={ctaPrimary.link}
+            className="btn-primary"
           >
-            <img
-              src="/logo.png?v=2"
-              alt="J-Road Logo"
-              className="w-full h-auto object-contain"
-            />
-          </motion.div>
-        </div>
+            {ctaPrimary.text}
+          </Link>
+          {ctaSecondary && (
+            <Link
+              href={ctaSecondary.link}
+              className="btn-secondary"
+            >
+              {ctaSecondary.text}
+            </Link>
+          )}
+        </motion.div>
+
+        {/* Small feature badges */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm"
+        >
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span>Authentic Training</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span>Cultural Experience</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span>Expert Instructors</span>
+          </div>
+        </motion.div>
       </div>
-      
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-white/60 text-sm font-medium">スクロール</span>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-1.5 h-1.5 bg-white/60 rounded-full mt-2"
-            />
-          </motion.div>
-        </div>
-      </motion.div>
+
+      {/* Bottom Decorative Wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg
+          viewBox="0 0 1200 100"
+          className="w-full h-16 sm:h-20"
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0 100 L0 40 Q300 0 600 40 T1200 40 L1200 100 Z" 
+            fill="white" 
+          />
+        </svg>
+      </div>
     </section>
   );
 }

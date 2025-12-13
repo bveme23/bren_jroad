@@ -27,7 +27,7 @@ const services = [
 
 export function Services() {
   return (
-    <FadeInSection className="py-24 bg-primarySoft">
+    <FadeInSection className="py-20 bg-gradient-to-b from-white to-gray-50">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,10 +36,11 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-textMain mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4">
             サービス内容
           </h2>
-          <p className="text-lg text-textMuted max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             「日本旅行の際に道場に行きたい」「信頼できる人から日本文化を学びたい」というニーズに応える、柔道特化のプログラムを用意しています。
           </p>
         </motion.div>
@@ -55,28 +56,26 @@ export function Services() {
               className="group h-full"
             >
               <Link href={service.link} className="block h-full">
-                <div className="card-hover rounded-3xl bg-white overflow-hidden shadow-xl border border-borderSubtle h-full flex flex-col">
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-textMain mb-3 tracking-tight group-hover:text-primary transition-colors">
-                      {service.title.includes('(今後展開予定)') ? (
-                        <>
-                          {service.title.split('(今後展開予定)')[0]}
-                          <span className="text-sm">(今後展開予定)</span>
-                        </>
-                      ) : (
-                        service.title
-                      )}
-                    </h3>
-                    <p className="text-base text-textMuted leading-relaxed mb-4 flex-grow">
-                      {service.description}
-                    </p>
-                    <span className="inline-flex items-center text-primary font-semibold text-sm group-hover:gap-2 transition-all">
-                      詳細を見る
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </div>
+                <div className="bg-white border-2 border-border hover:border-primary transition-all duration-300 p-8 rounded-lg group hover:shadow-xl h-full flex flex-col">
+                  <h3 className="text-xl font-medium text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {service.title.includes('(今後展開予定)') ? (
+                      <>
+                        {service.title.split('(今後展開予定)')[0]}
+                        <span className="text-sm">(今後展開予定)</span>
+                      </>
+                    ) : (
+                      service.title
+                    )}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4 flex-grow">
+                    {service.description}
+                  </p>
+                  <span className="inline-flex items-center text-primary font-medium text-sm group-hover:gap-3 transition-all">
+                    詳細を見る
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </div>
               </Link>
             </motion.div>
