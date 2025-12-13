@@ -3,35 +3,31 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { siteConfig } from '@/config/site';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import { useI18n } from '@/i18nContext';
 import type { SupportedLang } from '@/i18n';
 
+const navItems = siteConfig.navigation;
 const languages: SupportedLang[] = ['en', 'fr', 'ja', 'pt'];
-
-const navItems = [
-  { path: '/', label: 'Home' },
-  { path: '/experience', label: 'Judo Experience' },
-  { path: '/tourism', label: 'Judo Tourism' },
-  { path: '/study', label: 'Judo Study Abroad (今後展開予定)' },
-  { path: '/member', label: 'Member' },
-  { path: '/thoughts', label: 'Thoughts on Judo' },
-];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === '/';
   const { currentLang, setLang } = useI18n();
 
   useEffect(() => {
+    if (!isHomePage) setIsScrolled(true);
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 20 || !isHomePage);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   return (
     <motion.header
@@ -39,10 +35,12 @@ export function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${isScrolled ? 'bg-white border-b-2 border-black shadow-sm' : 'bg-transparent'}
+        ${isScrolled
+          ? 'bg-white border-b-2 border-black shadow-sm'
+          : 'bg-transparent'}
       `}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
 
           {/* Logo */}
@@ -62,13 +60,13 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Menu */}
+          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`relative px-5 py-3 group transition-all duration-300
+                className={`relative px-5 py-3 transition-all duration-300 group
                   ${pathname === item.path
                     ? 'text-primary'
                     : isScrolled
@@ -80,7 +78,7 @@ export function Header() {
                 <span className="relative z-10">
                   {item.label.includes('(今後展開予定)') ? (
                     <>
-                      {item.label.replace('(今後展開予定)', '')}
+                      {item.label.split('(今後展開予定)')[0]}
                       <span className="ml-1 text-xs">(今後展開予定)</span>
                     </>
                   ) : (
@@ -90,13 +88,16 @@ export function Header() {
 
                 <span
                   className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300
-                    ${pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}
+                    ${pathname === item.path
+                      ? 'w-full'
+                      : 'w-0 group-hover:w-full'
+                    }
                   `}
                 />
               </Link>
             ))}
 
-            {/* Language Switcher */}
+            {/* Language switcher */}
             <div className="ml-6 flex items-center bg-black rounded-full p-1 gap-1">
               {languages.map((lang) => (
                 <button
@@ -120,15 +121,29 @@ export function Header() {
 
           {/* Mobile Button */}
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-3 rounded transition-colors
+            className={`lg:hidden rounded p-3 transition-colors
               ${isScrolled
                 ? 'text-black hover:text-primary hover:bg-red-50'
                 : 'text-white hover:bg-white/10'
               }
             `}
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
           </button>
         </div>
       </div>
@@ -148,7 +163,7 @@ export function Header() {
                   key={item.path}
                   href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block w-full px-5 py-4 border-2 transition-all duration-300
+                  className={`block px-5 py-4 border-2 transition-all duration-300
                     ${pathname === item.path
                       ? 'border-primary bg-red-50 text-primary shadow-md'
                       : 'border-black hover:border-primary hover:shadow-md'
@@ -159,7 +174,6 @@ export function Header() {
                 </Link>
               ))}
 
-              {/* Mobile Language */}
               <div className="pt-4 border-t-2 border-black">
                 <div className="text-xs text-slate-500 mb-2">Language</div>
                 <div className="grid grid-cols-4 gap-2">
