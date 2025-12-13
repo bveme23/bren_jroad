@@ -3,36 +3,35 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { siteConfig } from '@/config/site';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useI18n } from '@/i18nContext';
 import { Menu, X } from 'lucide-react';
+import { useI18n } from '@/i18nContext';
+import type { SupportedLang } from '@/i18n';
 
-const navItems = siteConfig.navigation;
+const languages: SupportedLang[] = ['en', 'fr', 'ja', 'pt'];
 
-/** Idiomas definidos localmente (evita error de módulo) */
-type Lang = 'en' | 'fr' | 'ja' | 'pt';
-const languages: Lang[] = ['en', 'fr', 'ja', 'pt'];
+const navItems = [
+  { path: '/', label: 'Home' },
+  { path: '/experience', label: 'Judo Experience' },
+  { path: '/tourism', label: 'Judo Tourism' },
+  { path: '/study', label: 'Judo Study Abroad (今後展開予定)' },
+  { path: '/member', label: 'Member' },
+  { path: '/thoughts', label: 'Thoughts on Judo' },
+];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
-
   const { currentLang, setLang } = useI18n();
 
   useEffect(() => {
-    if (!isHomePage) setIsScrolled(true);
-
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20 || !isHomePage);
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomePage]);
+  }, []);
 
   return (
     <motion.header
@@ -46,7 +45,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
 
-          {/* LOGO */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <img
               src="/logo.png?v=2"
@@ -63,13 +62,13 @@ export function Header() {
             </div>
           </Link>
 
-          {/* DESKTOP MENU */}
+          {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`relative px-5 py-3 transition-all duration-300 group
+                className={`relative px-5 py-3 group transition-all duration-300
                   ${pathname === item.path
                     ? 'text-primary'
                     : isScrolled
@@ -81,7 +80,7 @@ export function Header() {
                 <span className="relative z-10">
                   {item.label.includes('(今後展開予定)') ? (
                     <>
-                      {item.label.split('(今後展開予定)')[0]}
+                      {item.label.replace('(今後展開予定)', '')}
                       <span className="ml-1 text-xs">(今後展開予定)</span>
                     </>
                   ) : (
@@ -89,7 +88,6 @@ export function Header() {
                   )}
                 </span>
 
-                {/* underline */}
                 <span
                   className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300
                     ${pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}
@@ -98,7 +96,7 @@ export function Header() {
               </Link>
             ))}
 
-            {/* LANGUAGE SWITCHER (estilo slider) */}
+            {/* Language Switcher */}
             <div className="ml-6 flex items-center bg-black rounded-full p-1 gap-1">
               {languages.map((lang) => (
                 <button
@@ -120,7 +118,7 @@ export function Header() {
             </div>
           </nav>
 
-          {/* MOBILE BUTTON */}
+          {/* Mobile Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-3 rounded transition-colors
@@ -129,14 +127,13 @@ export function Header() {
                 : 'text-white hover:bg-white/10'
               }
             `}
-            aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -162,7 +159,7 @@ export function Header() {
                 </Link>
               ))}
 
-              {/* MOBILE LANGUAGE */}
+              {/* Mobile Language */}
               <div className="pt-4 border-t-2 border-black">
                 <div className="text-xs text-slate-500 mb-2">Language</div>
                 <div className="grid grid-cols-4 gap-2">
