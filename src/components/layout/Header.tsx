@@ -6,17 +6,21 @@ import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '@/i18nContext';
-import type { SupportedLang } from '@/i18n';
 import { Menu, X } from 'lucide-react';
 
 const navItems = siteConfig.navigation;
-const languages: SupportedLang[] = ['en', 'fr', 'ja', 'pt'];
+
+/** Idiomas definidos localmente (evita error de módulo) */
+type Lang = 'en' | 'fr' | 'ja' | 'pt';
+const languages: Lang[] = ['en', 'fr', 'ja', 'pt'];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const pathname = usePathname();
   const isHomePage = pathname === '/';
+
   const { currentLang, setLang } = useI18n();
 
   useEffect(() => {
@@ -25,6 +29,7 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20 || !isHomePage);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage]);
@@ -41,11 +46,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
 
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 group"
-          >
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-3 group">
             <img
               src="/logo.png?v=2"
               alt="J-Road Logo"
@@ -61,7 +63,7 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* DESKTOP MENU */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <Link
@@ -90,16 +92,13 @@ export function Header() {
                 {/* underline */}
                 <span
                   className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300
-                    ${pathname === item.path
-                      ? 'w-full'
-                      : 'w-0 group-hover:w-full'
-                    }
+                    ${pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}
                   `}
                 />
               </Link>
             ))}
 
-            {/* Language Switcher (estilo slider) */}
+            {/* LANGUAGE SWITCHER (estilo slider) */}
             <div className="ml-6 flex items-center bg-black rounded-full p-1 gap-1">
               {languages.map((lang) => (
                 <button
@@ -121,7 +120,7 @@ export function Header() {
             </div>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-3 rounded transition-colors
@@ -137,7 +136,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -163,7 +162,7 @@ export function Header() {
                 </Link>
               ))}
 
-              {/* Mobile Language */}
+              {/* MOBILE LANGUAGE */}
               <div className="pt-4 border-t-2 border-black">
                 <div className="text-xs text-slate-500 mb-2">Language</div>
                 <div className="grid grid-cols-4 gap-2">
