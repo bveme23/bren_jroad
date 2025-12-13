@@ -7,8 +7,10 @@ import { siteConfig } from '@/config/site';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '@/i18nContext';
 import type { SupportedLang } from '@/i18n';
+import { Menu, X } from 'lucide-react';
 
 const navItems = siteConfig.navigation;
+const languages: SupportedLang[] = ['en', 'fr', 'ja', 'pt'];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +20,7 @@ export function Header() {
   const { currentLang, setLang } = useI18n();
 
   useEffect(() => {
-    // ホームページ以外では初期状態で背景を表示
-    if (!isHomePage) {
-      setIsScrolled(true);
-    }
+    if (!isHomePage) setIsScrolled(true);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20 || !isHomePage);
@@ -30,119 +29,115 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage]);
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
-  const closeMenu = () => setIsOpen(false);
-
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 bg-white border-b-2 border-black z-50 shadow-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        ${isScrolled ? 'bg-white border-b-2 border-black shadow-sm' : 'bg-transparent'}
+      `}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 h-20 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="flex items-center gap-3 text-xl font-medium tracking-wide text-foreground hover:opacity-80 transition-opacity group"
-        >
-          <img
-            src="/logo.png?v=2"
-            alt="J-Road Logo"
-            className="h-14 w-auto transition-transform group-hover:scale-105"
-          />
-          <div className="hidden sm:block">
-            <div className="text-xl tracking-wide">J-ROAD</div>
-            <div className="text-[10px] text-muted-foreground tracking-widest">柔道の道</div>
-          </div>
-        </Link>
-        <nav className="hidden gap-2 lg:flex items-center" aria-label="Main navigation">
-          {navItems.map((item) => {
-            const isActive = pathname === item.path;
-            const isComingSoon = item.label.includes('(今後展開予定)');
-            return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
+
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-3 group"
+          >
+            <img
+              src="/logo.png?v=2"
+              alt="J-Road Logo"
+              className="h-12 w-auto transition-transform group-hover:scale-105"
+            />
+            <div className="hidden sm:block">
+              <div className={`text-xl tracking-wide ${isScrolled ? 'text-black' : 'text-white'}`}>
+                J-ROAD
+              </div>
+              <div className={`text-[10px] tracking-widest ${isScrolled ? 'text-slate-500' : 'text-white/70'}`}>
+                柔道の道
+              </div>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-2">
+            {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`px-5 py-3 transition-all duration-300 relative group ${
-                  isActive
+                className={`relative px-5 py-3 transition-all duration-300 group
+                  ${pathname === item.path
                     ? 'text-primary'
-                    : 'text-foreground hover:text-primary'
-                }`}
+                    : isScrolled
+                      ? 'text-black hover:text-primary'
+                      : 'text-white hover:text-white'
+                  }
+                `}
               >
                 <span className="relative z-10">
-                  {isComingSoon ? (
+                  {item.label.includes('(今後展開予定)') ? (
                     <>
                       {item.label.split('(今後展開予定)')[0]}
-                      <span className="absolute top-1 right-1 text-[9px] text-white bg-primary px-1.5 py-0.5 rounded">
-                        NEW
-                      </span>
+                      <span className="ml-1 text-xs">(今後展開予定)</span>
                     </>
                   ) : (
                     item.label
                   )}
                 </span>
-                {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
-                )}
-                {!isActive && (
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary group-hover:w-full transition-all duration-300"></div>
-                )}
+
+                {/* underline */}
+                <span
+                  className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300
+                    ${pathname === item.path
+                      ? 'w-full'
+                      : 'w-0 group-hover:w-full'
+                    }
+                  `}
+                />
               </Link>
-            );
-          })}
-        <div className="flex items-center gap-3">
-          {/* Language selector as horizontal slider */}
-          <div className="hidden lg:flex items-center ml-6 bg-black rounded-full p-1 gap-1">
-            {(['en', 'fr', 'ja', 'pt'] as SupportedLang[]).map((lang) => {
-              const langMap: Record<string, string> = { en: 'ENG', fr: 'FR', ja: 'JP', pt: 'PT' };
-              const langLabel = langMap[lang] || lang.toUpperCase();
-              return (
+            ))}
+
+            {/* Language Switcher (estilo slider) */}
+            <div className="ml-6 flex items-center bg-black rounded-full p-1 gap-1">
+              {languages.map((lang) => (
                 <button
                   key={lang}
-                  type="button"
                   onClick={() => setLang(lang)}
-                  className={`px-4 py-2 rounded-full transition-all duration-300 text-sm tracking-wider relative ${
-                    currentLang === lang
+                  className={`px-4 py-2 rounded-full text-sm tracking-wider transition-all relative
+                    ${currentLang === lang
                       ? 'text-white'
                       : 'text-gray-400 hover:text-gray-200'
-                  }`}
-                  aria-label={`Switch to ${langLabel}`}
+                    }
+                  `}
                 >
                   {currentLang === lang && (
-                    <div className="absolute inset-0 border-2 border-primary rounded-full animate-pulse-slow"></div>
+                    <span className="absolute inset-0 border-2 border-primary rounded-full animate-pulse" />
                   )}
-                  <span className="relative z-10">{langLabel}</span>
+                  <span className="relative z-10">{lang.toUpperCase()}</span>
                 </button>
-              );
-            })}
-          </div>
-          
+              ))}
+            </div>
+          </nav>
+
+          {/* Mobile Menu Button */}
           <button
-            type="button"
-            className="inline-flex items-center justify-center p-3 text-foreground hover:text-primary hover:bg-primarySoft transition-colors rounded lg:hidden"
-            onClick={toggleMenu}
-            aria-expanded={isOpen}
-            aria-label="メニューを開閉"
+            onClick={() => setIsOpen(!isOpen)}
+            className={`lg:hidden p-3 rounded transition-colors
+              ${isScrolled
+                ? 'text-black hover:text-primary hover:bg-red-50'
+                : 'text-white hover:bg-white/10'
+              }
+            `}
+            aria-label="Toggle menu"
           >
-            <span className="sr-only">メニュー</span>
-            <svg
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {isOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -151,64 +146,44 @@ export function Header() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden border-t-2 border-black bg-white shadow-xl"
           >
-            <nav className="mx-auto flex max-w-7xl flex-col space-y-3 px-4 py-6" aria-label="モバイルメニュー">
-              {navItems.map((item) => {
-                const isActive = pathname === item.path;
-                const isComingSoon = item.label.includes('(今後展開予定)');
-                return (
-                  <Link
-                    key={item.path}
-                    href={item.path}
-                    onClick={closeMenu}
-                    className={`block w-full text-left px-5 py-4 border-2 transition-all duration-300 ${
-                      isActive
-                        ? 'border-primary bg-primarySoft text-primary shadow-md'
-                        : 'border-border hover:border-primary hover:shadow-md'
-                    }`}
-                  >
-                    <span>
-                      {isComingSoon ? (
-                        <>
-                          {item.label.split('(今後展開予定)')[0]}
-                          <span className="text-[10px] text-white bg-primary px-2 py-1 rounded ml-2">
-                            NEW
-                          </span>
-                        </>
-                      ) : (
-                        item.label
-                      )}
-                    </span>
-                  </Link>
-                );
-              })}
-              
-              {/* Mobile Language Switcher */}
-              <div className="pt-4 border-t-2 border-border">
-                <div className="text-xs text-muted-foreground mb-2 px-2">Language</div>
+            <div className="px-4 py-6 space-y-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block w-full px-5 py-4 border-2 transition-all duration-300
+                    ${pathname === item.path
+                      ? 'border-primary bg-red-50 text-primary shadow-md'
+                      : 'border-black hover:border-primary hover:shadow-md'
+                    }
+                  `}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              {/* Mobile Language */}
+              <div className="pt-4 border-t-2 border-black">
+                <div className="text-xs text-slate-500 mb-2">Language</div>
                 <div className="grid grid-cols-4 gap-2">
-                  {(['en', 'fr', 'ja', 'pt'] as SupportedLang[]).map((lang) => {
-                    const langMap: Record<string, string> = { en: 'ENG', fr: 'FR', ja: 'JP', pt: 'PT' };
-                    const langLabel = langMap[lang] || lang.toUpperCase();
-                    return (
-                      <button
-                        key={lang}
-                        onClick={() => {
-                          setLang(lang);
-                          closeMenu();
-                        }}
-                        className={`py-3 border-2 transition-all ${
-                          currentLang === lang
-                            ? 'border-primary bg-primary text-white shadow-md'
-                            : 'border-black hover:border-primary'
-                        }`}
-                      >
-                        {langLabel}
-                      </button>
-                    );
-                  })}
+                  {languages.map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => setLang(lang)}
+                      className={`py-3 border-2 transition-all
+                        ${currentLang === lang
+                          ? 'border-primary bg-primary text-white shadow-md'
+                          : 'border-black hover:border-primary'
+                        }
+                      `}
+                    >
+                      {lang.toUpperCase()}
+                    </button>
+                  ))}
                 </div>
               </div>
-            </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
