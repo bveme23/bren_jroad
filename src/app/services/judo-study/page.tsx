@@ -4,7 +4,6 @@ import { TextWithImage } from '@/components/sections/TextWithImage';
 import { BulletList } from '@/components/sections/BulletList';
 import { InfoGrid } from '@/components/sections/InfoGrid';
 import { CTASection } from '@/components/sections/CTASection';
-import { JapaneseDivider } from '@/components/decorative/JapaneseDivider';
 import { JapaneseBackground } from '@/components/decorative/JapaneseBackground';
 
 export const metadata: Metadata = {
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function JudoStudyPage() {
   return (
-    <div className="space-y-16 pb-16 relative">
+    <div className="pb-16 relative">
       <PageHeader
         title="柔道留学斡旋支援(今後展開予定)"
         subtitle="中長期滞在で柔道と日本文化を深く学ぶ方のためのトータルサポートプログラム。"
@@ -52,15 +51,13 @@ export default function JudoStudyPage() {
         </div>
       </div>
 
-      <JapaneseDivider />
-
-      <section className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="relative">
         {/* Background Image */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0">
           <img
-            src="/judo_help2.png"
+            src="/judo_help.png"
             alt=""
-            className="w-full h-full min-w-full min-h-full object-contain"
+            className="w-full h-full object-cover"
             aria-hidden="true"
           />
           {/* Semi-transparent black overlay */}
@@ -69,9 +66,8 @@ export default function JudoStudyPage() {
         
         {/* Content */}
         <div className="relative z-10">
-          <div>
-            {/* サポート内容の一例 */}
-            <div>
+          <section className="mx-auto flex max-w-6xl flex-col items-start gap-12 px-4 py-20 sm:px-6 lg:flex-row lg:items-center lg:gap-20 lg:px-8">
+            <div className="w-full">
               <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
                 サポート内容の一例
               </h2>
@@ -89,9 +85,9 @@ export default function JudoStudyPage() {
                 ))}
               </ul>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
+      </div>
 
       <InfoGrid
         title="こんな方におすすめ"
