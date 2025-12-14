@@ -48,7 +48,7 @@ export default function JudoStudyPage() {
               </div>
             </div>
             <div className="w-full lg:w-1/2 lg:order-1">
-              <h2 className="font-heading text-2xl font-bold text-white md:text-3xl tracking-tight text-shadow-subtle">
+              <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle">
                 継続的な学びと成長を支える仕組み
               </h2>
               <div 
@@ -64,35 +64,53 @@ export default function JudoStudyPage() {
 
       <JapaneseDivider />
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          {/* 左側: サポート内容の一例 */}
-          <div>
-            <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
-              サポート内容の一例
-            </h2>
-            <ul className="space-y-4 text-base text-muted-foreground md:text-lg leading-relaxed">
-              {[
-                '道場・学校の選定と紹介、面談調整',
-                '宿泊先・生活環境の手配、生活オリエンテーション',
-                '在留資格・保険・翻訳などの手続きサポート',
-                '渡航後の定期フォロー、緊急時のコンタクト',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-4">
-                  <span aria-hidden="true" className="mt-2 inline-block h-2 w-2 rounded-full bg-accent flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <section className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/judo_help.png"
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+          {/* Semi-transparent black overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            {/* 左側: サポート内容の一例 */}
+            <div>
+              <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
+                サポート内容の一例
+              </h2>
+              <ul className="space-y-4 text-base text-white md:text-lg leading-relaxed">
+                {[
+                  '道場・学校の選定と紹介、面談調整',
+                  '宿泊先・生活環境の手配、生活オリエンテーション',
+                  '在留資格・保険・翻訳などの手続きサポート',
+                  '渡航後の定期フォロー、緊急時のコンタクト',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-4">
+                    <span aria-hidden="true" className="mt-2 inline-block h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* 右側: 画像 */}
-          <div className="flex items-center justify-center">
-            <img
-              src="/柔道留学支援_2.png"
-              alt="柔道留学支援"
-              className="w-full h-auto object-contain"
-            />
+            {/* 右側: 画像 */}
+            <div className="flex items-center justify-center">
+              <div className="w-full overflow-hidden rounded-2xl bg-transparent">
+                <img
+                  src="/柔道留学支援_2.png"
+                  alt="柔道留学支援"
+                  className="w-full h-auto object-contain mix-blend-screen"
+                  style={{ filter: 'contrast(1.1) brightness(1.1)' }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
