@@ -24,7 +24,7 @@ export function Footer() {
           {/* About Section */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.png?v=2" alt="J-Road Logo" className="h-12 w-auto" />
+              <img src="/logo.png?v=2" alt="J-Road Logo" className="h-16 w-auto" />
             </div>
             <p className="text-white leading-relaxed">
               世界中の柔道家に向けて、柔道の技と精神を伝え、日本の本格的な武道文化とスポーツツーリズムを通じて、日本と世界をつなぎます。
