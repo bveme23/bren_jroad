@@ -26,7 +26,7 @@ export function TextWithImage({ title, text, image, layout = 'image-right' }: Te
           <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle">{title}</h2>
         )}
         <div 
-          className={`whitespace-pre-line text-base text-muted md:text-lg leading-relaxed ${title ? 'mt-6' : ''}`}
+          className={`whitespace-pre-line text-base text-muted-foreground md:text-lg leading-relaxed ${title ? 'mt-6' : ''}`}
           dangerouslySetInnerHTML={{
             __html: text.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-primary">$1</strong>')
           }}

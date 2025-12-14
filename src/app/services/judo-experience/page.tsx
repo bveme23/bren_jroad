@@ -33,7 +33,7 @@ export default function JudoExperiencePage() {
               <h1 className="font-heading text-3xl font-bold text-primary tracking-tight sm:text-4xl lg:text-4xl">
                 柔道体験
               </h1>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-textMuted">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
                 柔道初心者の方でも安心して参加できる1日体験プログラム。日本の伝統的な道場で柔道の基礎と礼法、日本文化を体験できます。
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
@@ -45,7 +45,7 @@ export default function JudoExperiencePage() {
                 </Link>
                 <Link
                   href="#schedule"
-                  className="inline-flex items-center justify-center rounded-lg border-2 border-subtle bg-white px-6 py-3 text-sm font-semibold text-textMain transition-all duration-300 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="inline-flex items-center justify-center rounded-lg border-2 border-subtle bg-white px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
                   1日の流れを見る
                 </Link>
@@ -73,7 +73,7 @@ export default function JudoExperiencePage() {
             <h2 className="font-heading text-2xl font-bold text-primary tracking-tight sm:text-3xl">
               柔道初心者向けの1日体験プログラム
             </h2>
-            <div className="mt-4 space-y-4 text-base leading-relaxed text-textMuted">
+            <div className="mt-4 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
                 柔道体験は、柔道未経験の方や初心者の方を対象とした、1日で柔道の基礎と日本文化を体験できるプログラムです。日本の伝統的な道場で、柔道の基本動作（受け身、礼法、基本の技）を学びながら、柔道を通じて日本の「礼」や「精神性」に触れることができます。経験豊富な指導者が丁寧にサポートしますので、柔道を初めて体験する方でも安心してご参加いただけます。
               </p>
@@ -120,7 +120,7 @@ export default function JudoExperiencePage() {
                 {index + 1}
               </div>
               <div className="flex-1">
-                <p className="text-sm leading-relaxed text-textMain">{item}</p>
+                <p className="text-sm leading-relaxed text-foreground">{item}</p>
               </div>
             </div>
           ))}
@@ -141,7 +141,7 @@ export default function JudoExperiencePage() {
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="text-sm text-textMain">
+          <p className="text-sm text-foreground">
             ※指導そのものは道場側のサービスとなり、当社は環境提供・調整を行う立場です。
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function JudoExperiencePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="flex-1 text-sm font-medium text-textMain">{item}</p>
+                <p className="flex-1 text-sm font-medium text-foreground">{item}</p>
               </div>
             ))}
           </div>

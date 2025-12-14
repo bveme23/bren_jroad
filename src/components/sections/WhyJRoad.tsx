@@ -35,10 +35,11 @@ export function WhyJRoad() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-textMain mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4">
             J-Roadが選ばれる理由
           </h2>
-          <p className="text-lg text-textMuted max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             『ただの観光』ではなく、『柔道を中心にした日本体験』をデザインします。
           </p>
         </motion.div>
@@ -56,10 +57,10 @@ export function WhyJRoad() {
               <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-2xl bg-primarySoft">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-textMain mb-4 tracking-tight">
+              <h3 className="text-xl font-medium text-foreground mb-4">
                 {feature.title}
               </h3>
-              <p className="text-base text-textMuted leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

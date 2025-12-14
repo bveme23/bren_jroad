@@ -56,7 +56,7 @@ export function ScheduleTable({ title, schedules }: ScheduleTableProps) {
                 </div>
               </div>
               <div className="flex-1">
-                <p className="text-sm sm:text-base text-muted leading-relaxed">{item.activity}</p>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{item.activity}</p>
               </div>
             </div>
           ))}

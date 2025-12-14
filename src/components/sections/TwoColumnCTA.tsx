@@ -19,7 +19,7 @@ export function TwoColumnCTA({ left, right }: TwoColumnCTAProps) {
           <div key={item.title} className="flex h-full flex-col justify-between rounded-2xl border border-subtle bg-card p-10 shadow-japanese hover-lift hover-glow">
             <div>
               <h3 className="text-xl font-semibold text-primary tracking-wide">{item.title}</h3>
-              <p className="mt-4 text-base text-muted leading-relaxed">{item.text}</p>
+              <p className="mt-4 text-base text-muted-foreground leading-relaxed">{item.text}</p>
             </div>
             <Link
               href={item.cta.link}

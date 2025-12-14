@@ -39,7 +39,7 @@ export default function JudoStudyPage() {
             <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
               サポート内容の一例
             </h2>
-            <ul className="space-y-4 text-base text-muted md:text-lg leading-relaxed">
+            <ul className="space-y-4 text-base text-muted-foreground md:text-lg leading-relaxed">
               {[
                 '道場・学校の選定と紹介、面談調整',
                 '宿泊先・生活環境の手配、生活オリエンテーション',

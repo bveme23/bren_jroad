@@ -41,7 +41,7 @@ export default function MessageToAllJapanJudoFederationPage() {
           <h2 className="text-2xl font-bold text-primary md:text-3xl tracking-tight">
             J-Road事業を通した将来ビジョン
           </h2>
-          <ul className="mt-8 space-y-6 text-base text-muted md:text-lg leading-relaxed">
+          <ul className="mt-8 space-y-6 text-base text-muted-foreground md:text-lg leading-relaxed">
             <li>
               <Link
                 href="/vision/dojo-establishment"
@@ -84,7 +84,7 @@ export default function MessageToAllJapanJudoFederationPage() {
           <h2 className="text-2xl font-bold text-primary md:text-3xl tracking-tight">
             私たちの取り組み
           </h2>
-          <div className="mt-6 space-y-6 text-base text-muted md:text-lg leading-relaxed">
+          <div className="mt-6 space-y-6 text-base text-muted-foreground md:text-lg leading-relaxed">
             <p>
               海外からの柔道家・柔道ファンが日本を訪れることで、柔道を通した国際交流、柔道の国際的な認知向上、そして柔道人口の拡大につながると考えています。
             </p>

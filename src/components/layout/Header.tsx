@@ -149,54 +149,53 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t-2 border-black bg-white shadow-xl"
-          >
-            <div className="px-4 py-6 space-y-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-5 py-4 border-2 transition-all duration-300
-                    ${pathname === item.path
-                      ? 'border-primary bg-red-50 text-primary shadow-md'
-                      : 'border-black hover:border-primary hover:shadow-md'
-                    }
-                  `}
-                >
-                  {item.label}
-                </Link>
-              ))}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.2 }}
+          className="lg:hidden border-t-2 border-black bg-white shadow-xl"
+        >
+          <div className="px-4 py-6 space-y-3">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                onClick={() => setIsOpen(false)}
+                className={`block px-5 py-4 border-2 transition-all duration-300 text-foreground
+                  ${pathname === item.path
+                    ? 'border-primary bg-primarySoft text-primary shadow-md'
+                    : 'border-black hover:border-primary hover:shadow-md'
+                  }
+                `}
+              >
+                {item.label}
+              </Link>
+            ))}
 
-              <div className="pt-4 border-t-2 border-black">
-                <div className="text-xs text-slate-500 mb-2">Language</div>
-                <div className="grid grid-cols-4 gap-2">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => setLang(lang)}
-                      className={`py-3 border-2 transition-all
-                        ${currentLang === lang
-                          ? 'border-primary bg-primary text-white shadow-md'
-                          : 'border-black hover:border-primary'
-                        }
-                      `}
-                    >
-                      {lang.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
+            <div className="pt-4 border-t-2 border-black">
+              <div className="text-xs text-muted-foreground mb-2 px-2">Language</div>
+              <div className="grid grid-cols-4 gap-2">
+                {languages.map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => setLang(lang)}
+                    className={`py-3 border-2 transition-all text-foreground
+                      ${currentLang === lang
+                        ? 'border-primary bg-primary text-white shadow-md'
+                        : 'border-black hover:border-primary'
+                      }
+                    `}
+                  >
+                    {lang.toUpperCase()}
+                  </button>
+                ))}
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </motion.div>
+      )}
     </motion.header>
   );
 }

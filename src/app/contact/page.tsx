@@ -63,12 +63,12 @@ export default function ContactPage() {
               >
                 入力内容を送信する
               </button>
-              <p className="text-xs text-muted">
+              <p className="text-xs text-muted-foreground">
                 フォームが送信できない場合は、<a href={`mailto:${siteConfig.socials.email}`} className="text-primary underline">{siteConfig.socials.email}</a> まで直接メールでお問い合わせください。
               </p>
             </form>
           </div>
-          <div className="flex flex-col gap-4 rounded-3xl border border-subtle bg-muted p-6 text-sm text-muted">
+          <div className="flex flex-col gap-4 rounded-3xl border border-subtle bg-muted p-6 text-sm text-muted-foreground">
             <div>
               <h2 className="text-base font-semibold text-primary">お問い合わせ先</h2>
               <p className="mt-2">

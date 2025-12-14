@@ -27,7 +27,7 @@ export function FeatureGrid({ title, subtitle, features }: FeatureGridProps) {
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle">{title}</h2>
-        {subtitle ? <p className="mt-6 text-base text-muted md:text-lg leading-relaxed">{subtitle}</p> : null}
+        {subtitle ? <p className="mt-6 text-base text-muted-foreground md:text-lg leading-relaxed">{subtitle}</p> : null}
       </div>
       <div className="mt-16 grid gap-8 md:grid-cols-3">
         {features.map((feature, index) => (
@@ -40,7 +40,7 @@ export function FeatureGrid({ title, subtitle, features }: FeatureGridProps) {
             </div>
             <div className="relative">
               <h3 className="text-lg font-semibold text-primary tracking-wide link-underline inline-block">{feature.title}</h3>
-              <p className="mt-4 text-sm text-muted md:text-base leading-relaxed">{feature.description}</p>
+              <p className="mt-4 text-sm text-muted-foreground md:text-base leading-relaxed">{feature.description}</p>
             </div>
           </div>
         ))}

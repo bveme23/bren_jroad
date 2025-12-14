@@ -20,7 +20,7 @@ export function ProcessSteps({ title, steps }: ProcessStepsProps) {
                   className="h-12 w-12 object-contain"
                 />
               </div>
-              <p className="flex-1 text-base text-muted md:text-lg leading-relaxed pt-1">{step}</p>
+              <p className="flex-1 text-base text-muted-foreground md:text-lg leading-relaxed pt-1">{step}</p>
             </li>
           );
         })}

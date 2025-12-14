@@ -17,7 +17,7 @@ export function PageHeader({ title, subtitle }: PageHeaderProps) {
             title
           )}
         </h1>
-        {subtitle ? <p className="mt-6 max-w-3xl text-base text-muted md:text-lg leading-relaxed break-keep">{subtitle}</p> : null}
+        {subtitle ? <p className="mt-6 max-w-3xl text-base text-muted-foreground md:text-lg leading-relaxed break-keep">{subtitle}</p> : null}
       </div>
     </section>
   );

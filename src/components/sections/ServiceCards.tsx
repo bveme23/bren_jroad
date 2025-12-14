@@ -28,7 +28,7 @@ export function ServiceCards({ services }: ServiceCardsProps) {
                   service.title
                 )}
               </h2>
-              <p className="mt-4 text-base text-muted leading-relaxed">{service.description}</p>
+              <p className="mt-4 text-base text-muted-foreground leading-relaxed">{service.description}</p>
             </div>
             <Link href={service.link} className="mt-8 inline-flex items-center text-sm font-semibold text-accent hover:text-primary transition-colors">
               詳しく見る →

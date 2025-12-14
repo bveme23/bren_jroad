@@ -42,7 +42,7 @@ export default function JudoTourismPage() {
               <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-6">
                 柔道ツーリズムについて
               </h2>
-              <div className="text-base text-muted md:text-lg leading-relaxed space-y-4">
+              <div className="text-base text-muted-foreground md:text-lg leading-relaxed space-y-4">
                 <p>
                   本プログラムは、「柔道そのものを体験する」ことを目的とした柔道ツーリズムです。私たちが提供するのは、観光アクティビティではなく、<strong className="font-semibold text-primary">実際の日本の道場で稽古に参加できる環境</strong>です。
                 </p>
@@ -70,7 +70,7 @@ export default function JudoTourismPage() {
             <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
               サービス例
             </h2>
-            <ul className="space-y-4 text-base text-muted md:text-lg leading-relaxed">
+            <ul className="space-y-4 text-base text-muted-foreground md:text-lg leading-relaxed">
               {[
                 '日本の町道場・名門道場での朝稽古参加環境の提供',
                 '道場との事前調整（参加レベル・帯の確認、受け入れ可否の確認など）',
@@ -85,7 +85,7 @@ export default function JudoTourismPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-muted italic">
+            <p className="mt-6 text-sm text-muted-foreground italic">
               ※指導そのものは道場側のサービスとなり、当社は環境提供・調整を行う立場です。
             </p>
           </div>
