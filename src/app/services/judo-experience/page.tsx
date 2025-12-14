@@ -56,7 +56,7 @@ export default function JudoExperiencePage() {
             <div className="order-first lg:order-last">
               <div className="overflow-hidden rounded-2xl bg-muted shadow-md">
                 <img
-                  src="https://images.unsplash.com/photo-1542818454-dc05decf9db3?auto=format&fit=crop&w=1200&q=80"
+                  src="/judo_exp.png"
                   alt="柔道体験"
                   className="h-auto w-full object-cover"
                 />
