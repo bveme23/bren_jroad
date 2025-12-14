@@ -12,11 +12,12 @@ interface HeroProps {
 }
 
 export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondary }: HeroProps) {
-  // Check if title contains Japanese phrase or English/French equivalent
-  const keyPhrase = title.includes('柔道界を変える') ? '柔道界を変える' : (title.includes('changing the world of judo') ? 'changing the world of judo' : (title.includes('changer le monde du judo') ? 'changer le monde du judo' : ''));
-  // Also handle "changing the world of judo" for English and "changer le monde du judo" for French
+  // Check if title contains Japanese phrase or English/French/Portuguese equivalent
+  const keyPhrase = title.includes('柔道界を変える') ? '柔道界を変える' : (title.includes('changing the world of judo') ? 'changing the world of judo' : (title.includes('changer le monde du judo') ? 'changer le monde du judo' : (title.includes('mudando o mundo do judô') ? 'mudando o mundo do judô' : '')));
+  // Also handle "changing the world of judo" for English, "changer le monde du judo" for French, and "mudando o mundo do judô" for Portuguese
   const englishKeyPhrase = 'changing the world of judo';
   const frenchKeyPhrase = 'changer le monde du judo';
+  const portugueseKeyPhrase = 'mudando o mundo do judô';
   // \nを改行として処理し、空行を除外
   const titleLines = title
     .replace(/\\n/g, '\n') // エスケープされた\nを実際の改行に変換
@@ -53,6 +54,17 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
         <span key={index}>
           {titleParts[0]}
           <span className="text-gradient">{frenchKeyPhrase}</span>
+          {titleParts[1]}
+          {index < titleLines.length - 1 && <br />}
+        </span>
+      );
+    }
+    if (line.includes(portugueseKeyPhrase)) {
+      const titleParts = line.split(portugueseKeyPhrase);
+      return (
+        <span key={index}>
+          {titleParts[0]}
+          <span className="text-gradient">{portugueseKeyPhrase}</span>
           {titleParts[1]}
           {index < titleLines.length - 1 && <br />}
         </span>
