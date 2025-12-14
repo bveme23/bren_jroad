@@ -180,7 +180,7 @@ export function JudoPlanCalculator() {
         borderRadius: '16px',
         border: '2px solid #dc2626',
         boxShadow: '0 4px 12px rgba(220, 38, 38, 0.15)',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif',
       }}
