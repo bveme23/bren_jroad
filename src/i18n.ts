@@ -502,14 +502,6 @@ export const translations: Record<SupportedLang, {
     'members.origin.text': 'From Kanagawa Prefecture',
     'members.bio': 'Attended a prestigious judo school and was active as a member. Afterward, became a teacher and worked as a homeroom teacher and judo club advisor at a private middle and high school. Currently works at a private school in Tokyo, teaching judo and health and physical education. Oversees J-Road\'s overall concept design and dojo network coordination.',
     
-    // Contact Page
-    'contact.form.name_label': 'Name',
-    'contact.form.request_label': 'Inquiry Details',
-    'contact.info.title': 'Contact Information',
-    'contact.info.languages_title': 'Supported Languages',
-    'contact.info.inquiries_title': 'Example Inquiries',
-    'contact.info.inquiries.item3': '• I want to consult about corporate training or team expeditions',
-    
     // Message Page
     'message.title': 'Our Vision for Judo',
     'message.subtitle': 'Through this initiative, we work to solve challenges facing the Japanese judo world.',
