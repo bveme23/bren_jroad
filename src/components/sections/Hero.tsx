@@ -69,7 +69,7 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 animate-fade-in"
+          className="mb-8 animate-fade-in"
         >
           <div className="inline-block relative">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
@@ -86,7 +86,7 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-white mb-6 text-4xl sm:text-5xl lg:text-6xl leading-tight -mt-4"
+          className="text-white mb-6 text-4xl sm:text-5xl lg:text-6xl leading-tight"
         >
           {titleLines.map((line, index) => {
             if (line.includes(keyPhrase)) {

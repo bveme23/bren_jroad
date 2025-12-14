@@ -48,7 +48,7 @@ export function Header() {
             <img
               src="/logo.png?v=2"
               alt="J-Road Logo"
-              className="h-12 w-auto transition-transform group-hover:scale-105"
+              className="h-16 w-auto transition-transform group-hover:scale-105"
             />
             <div className={`hidden sm:block text-[10px] tracking-widest ${isScrolled ? 'text-slate-500' : 'text-white/70'}`}>
               柔道の道
