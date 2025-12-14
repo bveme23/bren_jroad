@@ -37,16 +37,6 @@ export default function JudoStudyPage() {
         {/* Content */}
         <div className="relative z-10">
           <section className="mx-auto flex max-w-6xl flex-col items-start gap-12 px-4 py-20 sm:px-6 lg:flex-row lg:items-center lg:gap-20 lg:px-8">
-            <div className="w-full lg:w-1/2 lg:order-2">
-              <div className="w-full overflow-hidden rounded-2xl bg-transparent shadow-japanese transition-all duration-500 hover:shadow-japanese-hover">
-                <img
-                  src="/柔道留学支援_1.png"
-                  alt="継続的な学びと成長を支える仕組み"
-                  className="w-full h-auto object-contain mix-blend-screen"
-                  style={{ filter: 'contrast(1.1) brightness(1.1)' }}
-                />
-              </div>
-            </div>
             <div className="w-full lg:w-1/2 lg:order-1">
               <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle">
                 継続的な学びと成長を支える仕組み
@@ -68,7 +58,7 @@ export default function JudoStudyPage() {
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/judo_help.png"
+            src="/judo_help2.png"
             alt=""
             className="w-full h-full min-w-full min-h-full object-contain"
             aria-hidden="true"
@@ -79,8 +69,8 @@ export default function JudoStudyPage() {
         
         {/* Content */}
         <div className="relative z-10">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            {/* 左側: サポート内容の一例 */}
+          <div>
+            {/* サポート内容の一例 */}
             <div>
               <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
                 サポート内容の一例
@@ -98,18 +88,6 @@ export default function JudoStudyPage() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            {/* 右側: 画像 */}
-            <div className="flex items-center justify-center">
-              <div className="w-full overflow-hidden rounded-2xl bg-transparent">
-                <img
-                  src="/柔道留学支援_2.png"
-                  alt="柔道留学支援"
-                  className="w-full h-auto object-contain mix-blend-screen"
-                  style={{ filter: 'contrast(1.1) brightness(1.1)' }}
-                />
-              </div>
             </div>
           </div>
         </div>
