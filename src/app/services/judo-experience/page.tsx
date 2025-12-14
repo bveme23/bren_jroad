@@ -13,13 +13,13 @@ export default function JudoExperiencePage() {
           {/* Tag badges */}
           <div className="mb-6 flex flex-wrap gap-2">
             <span className="inline-flex items-center rounded-full bg-primarySoft px-3 py-1 text-xs font-medium text-primary">
-              1日体験
+              {t('experience.badge.one_day')}
             </span>
             <span className="inline-flex items-center rounded-full bg-primarySoft px-3 py-1 text-xs font-medium text-primary">
-              初心者歓迎
+              {t('experience.badge.beginner')}
             </span>
             <span className="inline-flex items-center rounded-full bg-primarySoft px-3 py-1 text-xs font-medium text-primary">
-              道場体験
+              {t('experience.badge.dojo')}
             </span>
           </div>
 
@@ -155,13 +155,13 @@ export default function JudoExperiencePage() {
 
         <div className="relative border-l-2 border-subtle pl-6 space-y-8">
           {[
-            { time: '10:00', activity: '集合・道場へ移動（指定の駅／ホテルロビーに集合、道場へ移動、到着後更衣室・荷物置き場などをご案内）' },
-            { time: '10:30', activity: 'オリエンテーション・準備（道場内でのマナー・ルールのご説明、柔道の歴史や文化についての簡単な紹介、着替え・ストレッチなどの事前準備）' },
-            { time: '11:00', activity: '柔道体験開始（準備運動、受け身の練習、基本の立ち方・構え方、簡単な技の体験）' },
-            { time: '12:30', activity: '休憩・振り返り（柔道体験の振り返り、質疑応答、柔道の文化や精神性についての説明）' },
-            { time: '13:00', activity: '礼法の実践（柔道の礼法について学び、実践する時間）' },
-            { time: '13:30', activity: '整理体操・片付け・着替え（クールダウンと簡単な振り返り、道場の清掃・片付けに参加、着替え・写真撮影）' },
-            { time: '14:00', activity: '解散（現地解散、もしくは最寄り駅までご案内。午後は自由行動にお使いいただけます）' },
+            { time: t('experience.schedule.item1.time'), activity: t('experience.schedule.item1.activity') },
+            { time: t('experience.schedule.item2.time'), activity: t('experience.schedule.item2.activity') },
+            { time: t('experience.schedule.item3.time'), activity: t('experience.schedule.item3.activity') },
+            { time: t('experience.schedule.item4.time'), activity: t('experience.schedule.item4.activity') },
+            { time: t('experience.schedule.item5.time'), activity: t('experience.schedule.item5.activity') },
+            { time: t('experience.schedule.item6.time'), activity: t('experience.schedule.item6.activity') },
+            { time: t('experience.schedule.item7.time'), activity: t('experience.schedule.item7.activity') },
           ].map((item, index) => (
             <div key={index} className="relative">
               {/* Timeline marker */}

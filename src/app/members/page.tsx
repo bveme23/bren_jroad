@@ -1,20 +1,16 @@
-import type { Metadata } from 'next';
+'use client';
 
-const members = [
-  {
-    name: '瀬戸口雄輝',
-    role: '代表 / 柔道指導者',
-    bio: '柔道名門校に進学し、メンバーとして活躍した。その後、教員となり私立中高一貫校で担任兼柔道部顧問として勤める。現在は東京都の私学に勤務し柔道ならびに保健体育を指導している。そして、J-Road全体のコンセプト設計と道場ネットワークを統括している。',
-  },
-];
+import { useI18n } from '@/i18nContext';
 
-export const metadata: Metadata = {
-  title: 'メンバー｜J-Roadを支える専門チーム',
-  description: '柔道界と国際交流に精通したJ-Roadのメンバーをご紹介。世界と日本を柔道でつなぐ専門チームがサポートします。',
-};
+const getMember = (t: (key: string) => string) => ({
+  name: '瀬戸口雄輝',
+  role: t('members.role'),
+  bio: t('members.bio'),
+});
 
 export default function MembersPage() {
-  const member = members[0];
+  const { t } = useI18n();
+  const member = getMember(t);
   
   return (
     <div className="relative min-h-screen">
@@ -46,7 +42,7 @@ export default function MembersPage() {
               fontWeight: '900',
             }}
           >
-            CEO｜{member.name}
+            {t('members.ceo')}｜{member.name}
           </h1>
         </div>
 
@@ -60,13 +56,13 @@ export default function MembersPage() {
                 className="text-lg font-bold text-white mb-2" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                学歴
+                {t('members.education.title')}
               </h3>
               <p 
                 className="text-sm text-white md:text-base" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                天理大学体育学部体育学科 卒業
+                {t('members.education.text')}
               </p>
             </div>
 
@@ -76,17 +72,17 @@ export default function MembersPage() {
                 className="text-lg font-bold text-white mb-2" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                柔道の大会成績
+                {t('members.achievements.title')}
               </h3>
               <div 
                 className="space-y-1 text-sm text-white md:text-base" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                <p>年齢：28歳</p>
-                <p>柔道歴：20年</p>
-                <p>小中高大社で全国大会出場</p>
-                <p>大学の時に全国大会上位入賞</p>
-                <p>神奈川県成年の部 国体代表</p>
+                <p>{t('members.achievements.age')}</p>
+                <p>{t('members.achievements.experience')}</p>
+                <p>{t('members.achievements.national1')}</p>
+                <p>{t('members.achievements.national2')}</p>
+                <p>{t('members.achievements.prefecture')}</p>
               </div>
             </div>
 
@@ -96,13 +92,13 @@ export default function MembersPage() {
                 className="text-lg font-bold text-white mb-2" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                職歴
+                {t('members.career.title')}
               </h3>
               <p 
                 className="text-sm text-white md:text-base" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                教員6年目
+                {t('members.career.text')}
               </p>
             </div>
 
@@ -112,13 +108,13 @@ export default function MembersPage() {
                 className="text-lg font-bold text-white mb-2" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                出身地
+                {t('members.origin.title')}
               </h3>
               <p 
                 className="text-sm text-white md:text-base" 
                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', fontSize: '1.05em' }}
               >
-                神奈川県出身
+                {t('members.origin.text')}
               </p>
             </div>
           </div>

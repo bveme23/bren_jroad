@@ -1,19 +1,16 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { PageHeader } from '@/components/sections/PageHeader';
 import { siteConfig } from '@/config/site';
-
-export const metadata: Metadata = {
-  title: 'お問い合わせ｜柔道体験・留学のご相談',
-  description:
-    '柔道ツーリズムや柔道留学に関するご相談・ご質問はこちらから。目的やご希望を丁寧に伺い、最適なプランをご提案します。',
-};
+import { useI18n } from '@/i18nContext';
 
 export default function ContactPage() {
+  const { t } = useI18n();
   return (
     <div className="space-y-16 pb-16">
       <PageHeader
-        title="お問い合わせ"
-        subtitle="柔道体験・留学のご相談、メディア取材、パートナーシップのご提案など、以下のフォームまたはメールからお気軽にお寄せください。"
+        title={t('contact.title')}
+        subtitle={t('contact.subtitle')}
       />
 
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -22,7 +19,7 @@ export default function ContactPage() {
             <form className="space-y-6" action={`mailto:${siteConfig.socials.email}`} method="post">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-primary">
-                  お名前
+                  {t('contact.form.name_label')}
                 </label>
                 <input
                   id="name"
@@ -34,7 +31,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-primary">
-                  メールアドレス
+                  {t('contact.form.email')}
                 </label>
                 <input
                   id="email"
@@ -46,13 +43,13 @@ export default function ContactPage() {
               </div>
               <div>
                 <label htmlFor="request" className="block text-sm font-medium text-primary">
-                  ご相談内容
+                  {t('contact.form.request_label')}
                 </label>
                 <textarea
                   id="request"
                   name="request"
                   rows={6}
-                  placeholder="例：柔道ツーリズムの相談で、来年春に5日間の滞在を検討しています"
+                  placeholder={t('contact.form.placeholder')}
                   className="mt-2 w-full rounded-lg border-2 border-black px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
                   required
                 />
@@ -61,32 +58,32 @@ export default function ContactPage() {
                 type="submit"
                 className="w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-accent shadow-japanese"
               >
-                入力内容を送信する
+                {t('contact.form.submit_button')}
               </button>
               <p className="text-xs text-muted-foreground">
-                フォームが送信できない場合は、<a href={`mailto:${siteConfig.socials.email}`} className="text-primary underline">{siteConfig.socials.email}</a> まで直接メールでお問い合わせください。
+                {t('contact.form.error')}<a href={`mailto:${siteConfig.socials.email}`} className="text-primary underline">{siteConfig.socials.email}</a>{t('contact.form.error_email')}
               </p>
             </form>
           </div>
           <div className="flex flex-col gap-4 rounded-3xl border border-subtle bg-muted p-6 text-sm text-muted-foreground">
             <div>
-              <h2 className="text-base font-semibold text-primary">お問い合わせ先</h2>
+              <h2 className="text-base font-semibold text-primary">{t('contact.info.title')}</h2>
               <p className="mt-2">
                 {siteConfig.socials.email}
                 <br />
-                平日 09:00-18:00（日本時間）
+                {t('contact.info.hours')}
               </p>
             </div>
             <div>
-              <h2 className="text-base font-semibold text-primary">対応言語</h2>
-              <p className="mt-2">日本語・英語・フランス語</p>
+              <h2 className="text-base font-semibold text-primary">{t('contact.info.languages_title')}</h2>
+              <p className="mt-2">{t('contact.info.languages')}</p>
             </div>
             <div>
-              <h2 className="text-base font-semibold text-primary">ご相談例</h2>
+              <h2 className="text-base font-semibold text-primary">{t('contact.info.inquiries_title')}</h2>
               <ul className="mt-2 space-y-1">
-                <li>・柔道ツーリズムのプランについて知りたい</li>
-                <li>・留学先の道場・学校選びを相談したい</li>
-                <li>・企業研修やチーム遠征の相談をしたい</li>
+                <li>{t('contact.info.inquiries.item1')}</li>
+                <li>{t('contact.info.inquiries.item2')}</li>
+                <li>{t('contact.info.inquiries.item3')}</li>
               </ul>
             </div>
           </div>
