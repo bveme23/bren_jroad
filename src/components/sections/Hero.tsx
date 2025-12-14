@@ -45,13 +45,10 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         {backgroundImage && (
-          <div
+          <img
+            src={backgroundImage}
+            alt=""
             className="w-full h-full object-cover opacity-50"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
             aria-hidden="true"
           />
         )}
@@ -66,13 +63,13 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
       <div className="absolute bottom-20 right-10 w-24 h-24 border-2 border-primary/20 rounded-lg -rotate-12"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-16">
         {/* Logo with enhanced styling */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-10 animate-fade-in"
+          className="mb-16 animate-fade-in"
         >
           <div className="inline-block relative">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
@@ -89,7 +86,7 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-white mb-6 text-4xl sm:text-5xl lg:text-6xl leading-tight"
+          className="text-white mb-6 text-4xl sm:text-5xl lg:text-6xl leading-tight -mt-4"
         >
           {titleLines.map((line, index) => {
             if (line.includes(keyPhrase)) {

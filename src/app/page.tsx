@@ -10,7 +10,7 @@ export default function Home() {
       <Hero
         title="世界と日本を結び、\n柔道界を変える"
         subtitle="海外の柔道家・柔道ファンが、日本で『本物の柔道』と『日本文化』を安心して体験できる新しいスポーツツーリズム。"
-        backgroundImage="https://images.unsplash.com/photo-1542818454-dc05decf9db3?auto=format&fit=crop&w=1600&q=80"
+        backgroundImage="/judo_players.jpg"
         ctaPrimary={{ text: 'サービスを見る', link: '/services/judo-tourism' }}
         ctaSecondary={{ text: 'まずは相談する', link: '/contact' }}
       />
