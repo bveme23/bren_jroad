@@ -52,11 +52,11 @@ export default function JudoExperiencePage() {
             {/* Right column: Image */}
             <div className="order-first lg:order-last">
               <div className="overflow-hidden rounded-2xl bg-muted shadow-md">
-                <img
-                  src="/judo_exp.png"
-                  alt="柔道体験"
-                  className="h-auto w-full object-cover"
-                />
+              <img
+                src="/judo_exp.png"
+                alt={t('experience.title')}
+                className="h-auto w-full object-cover"
+              />
               </div>
             </div>
           </div>
@@ -68,14 +68,14 @@ export default function JudoExperiencePage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="font-heading text-2xl font-bold text-primary tracking-tight sm:text-3xl">
-              柔道初心者向けの1日体験プログラム
+              {t('experience.intro.title')}
             </h2>
             <div className="mt-4 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                柔道体験は、柔道未経験の方や初心者の方を対象とした、1日で柔道の基礎と日本文化を体験できるプログラムです。日本の伝統的な道場で、柔道の基本動作（受け身、礼法、基本の技）を学びながら、柔道を通じて日本の「礼」や「精神性」に触れることができます。経験豊富な指導者が丁寧にサポートしますので、柔道を初めて体験する方でも安心してご参加いただけます。
+                {t('experience.intro.text1')}
               </p>
               <p>
-                稽古の後は、道場での体験を振り返りながら、柔道の歴史や文化についても学ぶ時間を設けています。
+                {t('experience.intro.text2')}
               </p>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function JudoExperiencePage() {
             <div className="overflow-hidden rounded-2xl bg-bgLight shadow-md">
               <img
                 src="/judo_begginers.png"
-                alt="柔道初心者向けの1日体験プログラム"
+                alt={t('experience.intro.title')}
                 className="h-auto w-full object-cover"
               />
             </div>
