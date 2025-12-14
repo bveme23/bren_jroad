@@ -180,7 +180,7 @@ export function JudoPlanCalculator() {
         borderRadius: '16px',
         border: '1px solid #e5e7eb',
         boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'rgba(255, 255, 255, 0.85)',
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif',
       }}
@@ -194,7 +194,7 @@ export function JudoPlanCalculator() {
       >
         サービスプラン・料金シミュレーター
       </h2>
-      <p style={{ fontSize: '0.9rem', color: '#666666', marginBottom: '20px' }}>
+      <p style={{ fontSize: '0.9rem', color: '#333333', marginBottom: '20px' }}>
         日数と1日あたりの訪問道場数を選ぶと、想定コストから利益率30％で算出した概算料金が表示されます。
       </p>
 
@@ -241,7 +241,7 @@ export function JudoPlanCalculator() {
                 fontSize: '0.95rem',
               }}
             />
-            <small style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
+            <small style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>
               0〜31日の範囲で入力してください（空白も可能）
             </small>
           </div>
@@ -320,7 +320,7 @@ export function JudoPlanCalculator() {
                 <span>大人</span>
               </label>
             </div>
-            <small style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
+            <small style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>
               現時点ではU18・大人とも同一料金ですが、将来的に割引率を変えることも可能です。
             </small>
           </div>
@@ -362,7 +362,7 @@ export function JudoPlanCalculator() {
               style={{
                 fontSize: '0.85rem',
                 fontWeight: 600,
-                color: '#6b7280',
+                color: '#333333',
                 marginBottom: '4px',
               }}
             >
@@ -374,7 +374,7 @@ export function JudoPlanCalculator() {
                   style={{
                     fontSize: '1.6rem',
                     fontWeight: 700,
-                    color: '#666666',
+                    color: '#333333',
                     marginBottom: '4px',
                   }}
                 >
@@ -383,7 +383,7 @@ export function JudoPlanCalculator() {
                 <div
                   style={{
                     fontSize: '0.8rem',
-                    color: '#666666',
+                    color: '#333333',
                   }}
                 >
                   日数を入力してください
