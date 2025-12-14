@@ -178,8 +178,8 @@ export function JudoPlanCalculator() {
         margin: '0 auto',
         padding: '24px',
         borderRadius: '16px',
-        border: '1px solid #e5e7eb',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+        border: '2px solid #dc2626',
+        boxShadow: '0 4px 12px rgba(220, 38, 38, 0.15)',
         backgroundColor: '#ffffff',
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif',
@@ -190,11 +190,13 @@ export function JudoPlanCalculator() {
           fontSize: '1.4rem',
           fontWeight: 700,
           marginBottom: '4px',
+          color: '#dc2626',
         }}
       >
         サービスプラン・料金シミュレーター
       </h2>
-      <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '20px' }}>
+      <div style={{ width: '48px', height: '2px', backgroundColor: '#dc2626', marginBottom: '12px' }}></div>
+      <p style={{ fontSize: '0.9rem', color: '#666666', marginBottom: '20px' }}>
         日数と1日あたりの訪問道場数を選ぶと、想定コストから利益率30％で算出した概算料金が表示されます。
       </p>
 
@@ -221,6 +223,7 @@ export function JudoPlanCalculator() {
                 fontSize: '0.9rem',
                 fontWeight: 600,
                 marginBottom: '4px',
+                color: '#000000',
               }}
             >
               日数
@@ -236,8 +239,17 @@ export function JudoPlanCalculator() {
                 width: '100%',
                 padding: '8px 10px',
                 borderRadius: '8px',
-                border: '1px solid #d1d5db',
+                border: '2px solid #000000',
                 fontSize: '0.95rem',
+                transition: 'all 0.3s',
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = '#dc2626';
+                e.target.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.1)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#000000';
+                e.target.style.boxShadow = 'none';
               }}
             />
             <small style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
@@ -254,6 +266,7 @@ export function JudoPlanCalculator() {
                 fontSize: '0.9rem',
                 fontWeight: 600,
                 marginBottom: '4px',
+                color: '#000000',
               }}
             >
               1日あたりの訪問道場数
@@ -266,8 +279,17 @@ export function JudoPlanCalculator() {
                 width: '100%',
                 padding: '8px 10px',
                 borderRadius: '8px',
-                border: '1px solid #d1d5db',
+                border: '2px solid #000000',
                 fontSize: '0.95rem',
+                transition: 'all 0.3s',
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = '#dc2626';
+                e.target.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.1)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#000000';
+                e.target.style.boxShadow = 'none';
               }}
             >
               <option value="1">1拠点</option>
@@ -284,6 +306,7 @@ export function JudoPlanCalculator() {
                 fontSize: '0.9rem',
                 fontWeight: 600,
                 marginBottom: '4px',
+                color: '#000000',
               }}
             >
               参加者区分
@@ -328,14 +351,15 @@ export function JudoPlanCalculator() {
               marginTop: '8px',
               padding: '10px 12px',
               borderRadius: '10px',
-              backgroundColor: '#f9fafb',
+              backgroundColor: '#fef2f2',
+              border: '2px solid #dc2626',
               fontSize: '0.85rem',
             }}
           >
-            <div style={{ fontWeight: 600, marginBottom: 4 }}>選択中のプラン</div>
-            <div>・日数：{days === '' ? '（未入力）' : `${days}日`}</div>
-            <div>・1日あたりの訪問道場数：{dojoCount}拠点</div>
-            <div>
+            <div style={{ fontWeight: 600, marginBottom: 4, color: '#dc2626' }}>選択中のプラン</div>
+            <div style={{ color: '#000000' }}>・日数：{days === '' ? '（未入力）' : `${days}日`}</div>
+            <div style={{ color: '#000000' }}>・1日あたりの訪問道場数：{dojoCount}拠点</div>
+            <div style={{ color: '#000000' }}>
               ・参加者区分：
               {participantType === 'u18' ? 'U18（18歳未満）' : '大人'}
             </div>
@@ -347,11 +371,12 @@ export function JudoPlanCalculator() {
           style={{
             flex: '1 1 280px',
             minWidth: 0,
-            padding: '16px',
+            padding: '20px',
             borderRadius: '12px',
             background:
-              'linear-gradient(135deg, rgba(59,130,246,0.06), rgba(16,185,129,0.06))',
-            border: '1px solid #e5e7eb',
+              'linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(220, 38, 38, 0.03))',
+            border: '2px solid #dc2626',
+            boxShadow: '0 4px 12px rgba(220, 38, 38, 0.15)',
           }}
         >
           <div style={{ marginBottom: '12px' }}>
@@ -359,8 +384,8 @@ export function JudoPlanCalculator() {
               style={{
                 fontSize: '0.85rem',
                 fontWeight: 600,
-                color: '#6b7280',
-                marginBottom: '4px',
+                color: '#dc2626',
+                marginBottom: '8px',
               }}
             >
               概算料金（1名あたり）
@@ -371,7 +396,7 @@ export function JudoPlanCalculator() {
                   style={{
                     fontSize: '1.6rem',
                     fontWeight: 700,
-                    color: '#111827',
+                    color: '#666666',
                     marginBottom: '4px',
                   }}
                 >
@@ -380,23 +405,24 @@ export function JudoPlanCalculator() {
                 <div
                   style={{
                     fontSize: '0.8rem',
-                    color: '#6b7280',
+                    color: '#666666',
                   }}
                 >
                   日数を入力してください
                 </div>
               </div>
             ) : !isValid ? (
-              <div style={{ color: '#ef4444', fontSize: '0.9rem' }}>
+              <div style={{ color: '#dc2626', fontSize: '0.9rem', fontWeight: 600 }}>
                 この日数に対応する保険料データが見つかりません。
               </div>
             ) : (
               <div>
                 <div
                   style={{
-                    fontSize: '1.6rem',
+                    fontSize: '2rem',
                     fontWeight: 700,
-                    color: '#111827',
+                    color: '#dc2626',
+                    textShadow: '0 2px 4px rgba(220, 38, 38, 0.2)',
                   }}
                 >
                   {formatYen(totalPrice)}
