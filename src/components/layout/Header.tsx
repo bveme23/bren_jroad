@@ -44,19 +44,14 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex flex-col items-start gap-1 group">
             <img
               src="/logo.png?v=2"
               alt="J-Road Logo"
               className="h-12 w-auto transition-transform group-hover:scale-105"
             />
-            <div className="hidden sm:block">
-              <div className={`text-xl tracking-wide ${isScrolled ? 'text-black' : 'text-white'}`}>
-                J-ROAD
-              </div>
-              <div className={`text-[10px] tracking-widest ${isScrolled ? 'text-slate-500' : 'text-white/70'}`}>
-                柔道の道
-              </div>
+            <div className={`hidden sm:block text-[10px] tracking-widest ${isScrolled ? 'text-slate-500' : 'text-white/70'}`}>
+              柔道の道
             </div>
           </Link>
 
