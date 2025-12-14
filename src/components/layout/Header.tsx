@@ -8,15 +8,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '@/i18nContext';
 import type { SupportedLang } from '@/i18n';
 
-const navItems = siteConfig.navigation;
 const languages: SupportedLang[] = ['en', 'fr', 'ja', 'pt'];
+
+const getNavItems = (t: (key: string) => string) => [
+  { label: t('nav.home'), path: '/' },
+  { label: t('nav.judo_experience'), path: '/services/judo-experience' },
+  { label: t('nav.judo_tourism'), path: '/services/judo-tourism' },
+  { label: t('nav.judo_study'), path: '/services/judo-study' },
+  { label: t('nav.members'), path: '/members' },
+  { label: t('nav.contact'), path: '/contact' },
+  { label: t('nav.thoughts'), path: '/message-to-all-japan-judo-federation' },
+];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
-  const { currentLang, setLang } = useI18n();
+  const { currentLang, setLang, t } = useI18n();
+  const navItems = getNavItems(t);
 
   useEffect(() => {
     if (!isHomePage) setIsScrolled(true);

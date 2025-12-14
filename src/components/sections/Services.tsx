@@ -3,29 +3,32 @@
 import { FadeInSection } from '@/components/common/FadeInSection';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useI18n } from '@/i18nContext';
 
-const services = [
+const getServices = (t: (key: string) => string) => [
   {
-    title: '柔道体験',
-    description: '日本の道場で柔道を体験できるプログラム。',
+    title: t('services.experience.title'),
+    description: t('services.experience.description'),
     link: '/services/judo-experience',
     image: 'https://images.unsplash.com/photo-1542818454-dc05decf9db3?auto=format&fit=crop&w=800&q=80',
   },
   {
-    title: '柔道ツーリズム',
-    description: '数日〜1週間程度の滞在で、日本の道場稽古と観光・文化体験を組み合わせたオーダーメイドツアー。',
+    title: t('services.tourism.title'),
+    description: t('services.tourism.description'),
     link: '/services/judo-tourism',
     image: 'https://images.unsplash.com/photo-1542818454-dc05decf9db3?auto=format&fit=crop&w=800&q=80',
   },
   {
-    title: '柔道留学斡旋支援(今後展開予定)',
-    description: '数ヶ月〜数年単位の中長期滞在を想定した、道場・学校・住環境などのトータルコーディネート。',
+    title: t('services.study.title'),
+    description: t('services.study.description'),
     link: '/services/judo-study',
     image: 'https://images.unsplash.com/photo-1542818454-dc05decf9db3?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
 export function Services() {
+  const { t } = useI18n();
+  const services = getServices(t);
   return (
     <FadeInSection className="py-20 bg-gradient-to-b from-white to-gray-50">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -37,11 +40,11 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4">
-            サービス内容
+            {t('services.title')}
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            「日本旅行の際に道場に行きたい」「信頼できる人から日本文化を学びたい」というニーズに応える、柔道特化のプログラムを用意しています。
+            {t('services.description')}
           </p>
         </motion.div>
         
@@ -58,7 +61,12 @@ export function Services() {
               <Link href={service.link} className="block h-full">
                 <div className="bg-white border-2 border-border hover:border-primary transition-all duration-300 p-8 rounded-lg group hover:shadow-xl h-full flex flex-col">
                   <h3 className="text-xl font-medium text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {service.title.includes('(今後展開予定)') ? (
+                    {service.title.includes('(Coming Soon)') ? (
+                      <>
+                        {service.title.split('(Coming Soon)')[0]}
+                        <span className="text-sm">(Coming Soon)</span>
+                      </>
+                    ) : service.title.includes('(今後展開予定)') ? (
                       <>
                         {service.title.split('(今後展開予定)')[0]}
                         <span className="text-sm">(今後展開予定)</span>

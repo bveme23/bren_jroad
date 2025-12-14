@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { PageHeader } from '@/components/sections/PageHeader';
 import { TextWithImage } from '@/components/sections/TextWithImage';
 import { InfoGrid } from '@/components/sections/InfoGrid';
@@ -7,19 +8,15 @@ import { ScheduleTable } from '@/components/sections/ScheduleTable';
 import { JudoPlanCalculator } from '@/components/sections/JudoPlanCalculator';
 import { JapaneseDivider } from '@/components/decorative/JapaneseDivider';
 import { JapaneseBackground } from '@/components/decorative/JapaneseBackground';
-
-export const metadata: Metadata = {
-  title: '柔道ツーリズム｜短期滞在で日本の柔道と文化を体験',
-  description:
-    '日本の本物の道場で、汗をかき、礼を学び、柔道の「空気」を全身で味わう。観光では味わえない、“稽古する旅” を。',
-};
+import { useI18n } from '@/i18nContext';
 
 export default function JudoTourismPage() {
+  const { t } = useI18n();
   return (
     <div className="pb-16 relative">
       <PageHeader 
-        title="柔道ツーリズム" 
-        subtitle="日本の本物の道場で、汗をかき、礼を学び、柔道の「空気」を全身で味わう。観光では味わえない、“稽古する旅” を。" 
+        title={t('tourism.title')} 
+        subtitle={t('tourism.subtitle')} 
       />
 
       <section className="relative w-full">
@@ -41,17 +38,17 @@ export default function JudoTourismPage() {
             {/* 柔道ツーリズムについて */}
             <div>
               <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-6">
-                柔道ツーリズムについて
+                {t('tourism.about.title')}
               </h2>
               <div className="text-base text-white md:text-lg leading-relaxed space-y-4">
                 <p>
-                  本プログラムは、「柔道そのものを体験する」ことを目的とした柔道ツーリズムです。私たちが提供するのは、観光アクティビティではなく、<strong className="font-semibold text-primary">実際の日本の道場で稽古に参加できる環境</strong>です。
+                  {t('tourism.about.text1')}<strong className="font-semibold text-primary">{t('tourism.about.text1_strong')}</strong>{t('tourism.about.text1_end')}
                 </p>
                 <p>
-                  参加者のレベルや目的に応じて、提携道場へのご案内や稽古参加の調整、必要な事前サポートを行います。
+                  {t('tourism.about.text2')}
                 </p>
                 <p>
-                  稽古そのものの指導は、各道場の指導者が担当し、私たちはその場に安全・安心にアクセスできる「場づくり」と「環境提供」に専念します。
+                  {t('tourism.about.text3')}
                 </p>
               </div>
             </div>
@@ -69,16 +66,16 @@ export default function JudoTourismPage() {
           {/* 左側: サービス例 */}
           <div>
             <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-8">
-              サービス例
+              {t('tourism.services.title')}
             </h2>
             <ul className="space-y-4 text-base text-muted-foreground md:text-lg leading-relaxed">
               {[
-                '日本の町道場・名門道場での朝稽古参加環境の提供',
-                '道場との事前調整（参加レベル・帯の確認、受け入れ可否の確認など）',
-                '稽古前後の道場ルール・礼法の簡単な説明（日本語／英語）',
-                '稽古中の見学枠・同伴者向けの待機スペース案内（可能な道場のみ）',
-                '柔道着レンタルや購入のサポート（別料金・対応可能な場合）',
-                '稽古後におすすめの周辺観光やランチスポットの簡易ガイド',
+                t('tourism.services.item1'),
+                t('tourism.services.item2'),
+                t('tourism.services.item3'),
+                t('tourism.services.item4'),
+                t('tourism.services.item5'),
+                t('tourism.services.item6'),
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4">
                   <span aria-hidden="true" className="mt-2 inline-block h-2 w-2 rounded-full bg-accent flex-shrink-0" />
@@ -87,7 +84,7 @@ export default function JudoTourismPage() {
               ))}
             </ul>
             <p className="mt-6 text-sm text-muted-foreground italic">
-              ※指導そのものは道場側のサービスとなり、当社は環境提供・調整を行う立場です。
+              {t('tourism.services.note')}
             </p>
           </div>
 
@@ -146,9 +143,9 @@ export default function JudoTourismPage() {
 
 
       <CTASection
-        title="柔道ツーリズムについて相談してみる"
-        text="渡航時期やご希望のエリアが決まっていなくても構いません。まずはお気軽にお問い合わせください。"
-        cta={{ text: 'お問い合わせフォームへ', link: '/contact' }}
+        title={t('tourism.cta.title')}
+        text={t('tourism.cta.text')}
+        cta={{ text: t('tourism.cta.button'), link: '/contact' }}
       />
     </div>
   );

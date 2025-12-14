@@ -1,8 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { useI18n } from '@/i18nContext';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
 
   return (
     <footer className="relative mt-20 border-t-2 border-black overflow-hidden">
@@ -27,7 +31,7 @@ export function Footer() {
               <img src="/logo.png?v=2" alt="J-Road Logo" className="h-16 w-auto" />
             </div>
             <p className="text-white leading-relaxed">
-              世界中の柔道家に向けて、柔道の技と精神を伝え、日本の本格的な武道文化とスポーツツーリズムを通じて、日本と世界をつなぎます。
+              {t('footer.quote')}
             </p>
           </div>
 
@@ -98,7 +102,7 @@ export function Footer() {
             </div>
             <div className="space-y-2">
               <h4 className="text-sm text-white">Business Hours</h4>
-              <p className="text-white text-sm">Weekdays 09:00-18:00 (Japan time)</p>
+              <p className="text-white text-sm">{t('footer.business_hours')}</p>
             </div>
           </div>
         </div>

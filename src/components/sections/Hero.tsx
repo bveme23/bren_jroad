@@ -12,7 +12,10 @@ interface HeroProps {
 }
 
 export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondary }: HeroProps) {
-  const keyPhrase = '柔道界を変える';
+  // Check if title contains Japanese phrase or English equivalent
+  const keyPhrase = title.includes('柔道界を変える') ? '柔道界を変える' : (title.includes('Transforming Judo') ? 'Transforming Judo' : '');
+  // Also handle "Transforming Judo" for English
+  const englishKeyPhrase = 'Transforming Judo';
   // \nを改行として処理し、空行を除外
   const titleLines = title
     .replace(/\\n/g, '\n') // エスケープされた\nを実際の改行に変換
@@ -27,6 +30,17 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
         <span key={index}>
           {titleParts[0]}
           <span className="text-gradient">{keyPhrase}</span>
+          {titleParts[1]}
+          {index < titleLines.length - 1 && <br />}
+        </span>
+      );
+    }
+    if (line.includes(englishKeyPhrase)) {
+      const titleParts = line.split(englishKeyPhrase);
+      return (
+        <span key={index}>
+          {titleParts[0]}
+          <span className="text-gradient">{englishKeyPhrase}</span>
           {titleParts[1]}
           {index < titleLines.length - 1 && <br />}
         </span>

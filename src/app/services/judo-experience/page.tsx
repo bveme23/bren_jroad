@@ -1,13 +1,10 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+'use client';
 
-export const metadata: Metadata = {
-  title: '柔道体験｜1日で日本の柔道と文化を体験',
-  description:
-    '柔道初心者の方でも安心して参加できる1日体験プログラム。日本の伝統的な道場で柔道の基礎と礼法、日本文化を体験できます。',
-};
+import Link from 'next/link';
+import { useI18n } from '@/i18nContext';
 
 export default function JudoExperiencePage() {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -31,23 +28,23 @@ export default function JudoExperiencePage() {
             {/* Left column: Title and CTA */}
             <div>
               <h1 className="font-heading text-3xl font-bold text-primary tracking-tight sm:text-4xl lg:text-4xl">
-                柔道体験
+                {t('experience.title')}
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                柔道初心者の方でも安心して参加できる1日体験プログラム。日本の伝統的な道場で柔道の基礎と礼法、日本文化を体験できます。
+                {t('experience.subtitle')}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-red transition-all duration-300 hover:bg-accent hover:shadow-red-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
-                  お問い合わせ
+                  {t('experience.button.contact')}
                 </Link>
                 <Link
                   href="#schedule"
                   className="inline-flex items-center justify-center rounded-lg border-2 border-subtle bg-white px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
-                  1日の流れを見る
+                  {t('experience.button.schedule')}
                 </Link>
               </div>
             </div>
@@ -98,19 +95,19 @@ export default function JudoExperiencePage() {
       <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mb-8">
           <h2 className="font-heading text-2xl font-bold text-primary tracking-tight sm:text-3xl">
-            サービス内容
+            {t('experience.services.title')}
           </h2>
           <div className="mt-2 h-1 w-12 rounded-full bg-primary"></div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           {[
-            '日本の伝統的な道場での柔道体験環境の提供',
-            '柔道初心者向けの基礎指導（受け身、礼法、基本の技）',
-            '道場でのマナー・ルールの丁寧な説明（日本語／英語）',
-            '柔道着のレンタル（別料金・対応可能な場合）',
-            '柔道の歴史や文化についての簡単な説明',
-            '稽古後の振り返りと質疑応答の時間',
+            t('experience.services.item1'),
+            t('experience.services.item2'),
+            t('experience.services.item3'),
+            t('experience.services.item4'),
+            t('experience.services.item5'),
+            t('experience.services.item6'),
           ].map((item, index) => (
             <div
               key={index}
@@ -142,7 +139,7 @@ export default function JudoExperiencePage() {
             />
           </svg>
           <p className="text-sm text-foreground">
-            ※指導そのものは道場側のサービスとなり、当社は環境提供・調整を行う立場です。
+            {t('experience.services.note')}
           </p>
         </div>
       </section>
@@ -151,7 +148,7 @@ export default function JudoExperiencePage() {
       <section id="schedule" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="mb-8">
           <h2 className="font-heading text-2xl font-bold text-primary tracking-tight sm:text-3xl">
-            1日の流れ
+            {t('experience.schedule.title')}
           </h2>
           <div className="mt-2 h-1 w-12 rounded-full bg-primary"></div>
         </div>
@@ -191,17 +188,17 @@ export default function JudoExperiencePage() {
         <div className="rounded-2xl bg-muted px-4 py-8 sm:px-8 sm:py-10">
           <div className="mb-8">
             <h2 className="font-heading text-2xl font-bold text-primary tracking-tight sm:text-3xl">
-              こんな方におすすめ
+              {t('experience.recommended.title')}
             </h2>
             <div className="mt-2 h-1 w-12 rounded-full bg-primary"></div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              '柔道を初めて体験してみたい方',
-              '日本の伝統文化や武道に興味がある方',
-              '日本旅行中に柔道の基礎を学びたい方',
-              '柔道の礼法や精神性に触れたい方',
+              t('experience.recommended.item1'),
+              t('experience.recommended.item2'),
+              t('experience.recommended.item3'),
+              t('experience.recommended.item4'),
             ].map((item, index) => (
               <div
                 key={index}
@@ -224,10 +221,10 @@ export default function JudoExperiencePage() {
         <div className="mt-12 rounded-2xl bg-primary px-6 py-8 text-center shadow-red sm:flex sm:items-center sm:justify-between sm:text-left sm:gap-4">
           <div className="mb-4 sm:mb-0">
             <h2 className="text-xl font-semibold text-white">
-              柔道体験について相談してみる
+              {t('experience.cta.title')}
             </h2>
             <p className="mt-2 text-sm text-white/90">
-              柔道未経験の方でも大丈夫です。まずはお気軽にお問い合わせください。
+              {t('experience.cta.text')}
             </p>
           </div>
           <div className="shrink-0">
@@ -235,7 +232,7 @@ export default function JudoExperiencePage() {
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-primary shadow-md transition-all duration-300 hover:bg-muted hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
             >
-              お問い合わせフォームへ
+              {t('experience.cta.button')}
             </Link>
           </div>
         </div>

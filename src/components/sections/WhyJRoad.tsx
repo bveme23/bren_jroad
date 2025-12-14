@@ -5,26 +5,29 @@ import { motion } from 'framer-motion';
 import { JudoIcon } from '@/components/icons/JudoIcon';
 import { DojoIcon } from '@/components/icons/DojoIcon';
 import { BowIcon } from '@/components/icons/BowIcon';
+import { useI18n } from '@/i18nContext';
 
-const features = [
+const getFeatures = (t: (key: string) => string) => [
   {
-    title: '本物の道場での稽古',
-    description: '競技実績・指導歴の豊富な指導者が在籍する、日本の本物の道場を厳選。レベル・目的に合わせた稽古環境をコーディネートします。',
+    title: t('why.feature1.title'),
+    description: t('why.feature1.description'),
     icon: <JudoIcon className="text-primary" size={40} />,
   },
   {
-    title: '日本文化を深く学ぶプログラム',
-    description: '柔道だけでなく、礼法、歴史、食文化、観光などを組み合わせた「学び」としての旅程を提案します。',
+    title: t('why.feature2.title'),
+    description: t('why.feature2.description'),
     icon: <DojoIcon className="text-primary" size={40} />,
   },
   {
-    title: '信頼できるプロフェッショナルのサポート',
-    description: '柔道界に20年以上関わるメンバーが監修。渡航前の相談から滞在中のサポートまで、安心できる伴走体制を整えています。',
+    title: t('why.feature3.title'),
+    description: t('why.feature3.description'),
     icon: <BowIcon className="text-primary" size={40} />,
   },
 ];
 
 export function WhyJRoad() {
+  const { t } = useI18n();
+  const features = getFeatures(t);
   return (
     <FadeInSection className="py-24 bg-white">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -36,11 +39,11 @@ export function WhyJRoad() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4">
-            J-Roadが選ばれる理由
+            {t('why.title')}
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            『ただの観光』ではなく、『柔道を中心にした日本体験』をデザインします。
+            {t('why.quote')}
           </p>
         </motion.div>
         

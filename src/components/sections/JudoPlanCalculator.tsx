@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, ChangeEvent } from 'react';
+import { useI18n } from '@/i18nContext';
 
 type DojoCount = '1' | '2' | '3';
 type ParticipantType = 'u18' | 'adult';
@@ -135,6 +136,7 @@ function calcPlanPrice(days: number, dojoCount: DojoCount) {
  * メインコンポーネント
  */
 export function JudoPlanCalculator() {
+  const { t } = useI18n();
   const [days, setDays] = useState<number | ''>(1);
   const [dojoCount, setDojoCount] = useState<DojoCount>('1');
   const [participantType, setParticipantType] = useState<ParticipantType>('u18');
@@ -193,11 +195,11 @@ export function JudoPlanCalculator() {
           color: '#dc2626',
         }}
       >
-        サービスプラン・料金シミュレーター
+        {t('calculator.title')}
       </h2>
       <div style={{ width: '48px', height: '2px', backgroundColor: '#dc2626', marginBottom: '12px' }}></div>
       <p style={{ fontSize: '0.9rem', color: '#333333', marginBottom: '20px' }}>
-        日数と1日あたりの訪問道場数を選ぶと、想定コストから利益率30％で算出した概算料金が表示されます。
+        {t('calculator.description')}
       </p>
 
       <div
@@ -221,7 +223,7 @@ export function JudoPlanCalculator() {
                 color: '#000000',
               }}
             >
-              日数
+              {t('calculator.days')}
             </label>
             <input
               id="days"
@@ -248,7 +250,7 @@ export function JudoPlanCalculator() {
               }}
             />
             <small style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>
-              0〜31日の範囲で入力してください（空白も可能）
+              {t('calculator.days_hint')}
             </small>
           </div>
 
@@ -264,7 +266,7 @@ export function JudoPlanCalculator() {
                 color: '#000000',
               }}
             >
-              1日あたりの訪問道場数
+              {t('calculator.dojo_count')}
             </label>
             <select
               id="dojoCount"
@@ -287,9 +289,9 @@ export function JudoPlanCalculator() {
                 e.target.style.boxShadow = 'none';
               }}
             >
-              <option value="1">1拠点</option>
-              <option value="2">2拠点</option>
-              <option value="3">3拠点</option>
+              <option value="1">1 {t('calculator.dojo_suffix').trim()}</option>
+              <option value="2">2 {t('calculator.dojo_suffix').trim()}</option>
+              <option value="3">3 {t('calculator.dojo_suffix').trim()}</option>
             </select>
           </div>
 
@@ -304,7 +306,7 @@ export function JudoPlanCalculator() {
                 color: '#000000',
               }}
             >
-              参加者区分
+              {t('calculator.participant_type')}
             </span>
             <div
               style={{
@@ -322,7 +324,7 @@ export function JudoPlanCalculator() {
                   checked={participantType === 'u18'}
                   onChange={handleParticipantTypeChange}
                 />
-                <span>U18（18歳未満）</span>
+                <span>{t('calculator.u18')}</span>
               </label>
               <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <input
@@ -332,11 +334,11 @@ export function JudoPlanCalculator() {
                   checked={participantType === 'adult'}
                   onChange={handleParticipantTypeChange}
                 />
-                <span>大人</span>
+                <span>{t('calculator.adult')}</span>
               </label>
             </div>
             <small style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>
-              現時点ではU18・大人とも同一料金ですが、将来的に割引率を変えることも可能です。
+              {t('calculator.participant_note')}
             </small>
           </div>
 
@@ -350,12 +352,11 @@ export function JudoPlanCalculator() {
               fontSize: '0.85rem',
             }}
           >
-            <div style={{ fontWeight: 600, marginBottom: 4 }}>選択中のプラン</div>
-            <div style={{ color: '#000000' }}>・日数：{days === '' ? '（未入力）' : `${days}日`}</div>
-            <div style={{ color: '#000000' }}>・1日あたりの訪問道場数：{dojoCount}拠点</div>
+            <div style={{ fontWeight: 600, marginBottom: 4, color: '#dc2626' }}>{t('calculator.selected_plan')}</div>
+            <div style={{ color: '#000000' }}>{t('calculator.days_label')} {days === '' ? t('calculator.days_empty') : `${days}${t('calculator.days_suffix')}`}</div>
+            <div style={{ color: '#000000' }}>{t('calculator.dojo_label')} {dojoCount} {t('calculator.dojo_suffix').trim()}</div>
             <div style={{ color: '#000000' }}>
-              ・参加者区分：
-              {participantType === 'u18' ? 'U18（18歳未満）' : '大人'}
+              {t('calculator.participant_label')} {participantType === 'u18' ? t('calculator.u18') : t('calculator.adult')}
             </div>
           </div>
         </div>
@@ -380,7 +381,7 @@ export function JudoPlanCalculator() {
                 marginBottom: '8px',
               }}
             >
-              概算料金（1名あたり）
+              {t('calculator.price_label')}
             </div>
             {daysNum === 0 || days === '' ? (
               <div>
@@ -400,12 +401,12 @@ export function JudoPlanCalculator() {
                     color: '#333333',
                   }}
                 >
-                  日数を入力してください
+                  {t('calculator.enter_days')}
                 </div>
               </div>
             ) : !isValid ? (
               <div style={{ color: '#dc2626', fontSize: '0.9rem', fontWeight: 600 }}>
-                この日数に対応する保険料データが見つかりません。
+                {t('calculator.invalid_days')}
               </div>
             ) : (
               <div>
