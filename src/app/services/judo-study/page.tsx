@@ -36,12 +36,29 @@ export default function JudoStudyPage() {
         
         {/* Content */}
         <div className="relative z-10">
-          <TextWithImage
-            layout="image-left"
-            title="継続的な学びと成長を支える仕組み"
-            text="柔道留学斡旋支援では、留学目的・競技レベル・将来のキャリアビジョンを丁寧にヒアリングし、最適な道場・学校・生活環境を提案します。到着前の準備から滞在中のフォロー、進路相談まで、専門チームが伴走します。"
-            image="/柔道留学支援_1.png"
-          />
+          <section className="mx-auto flex max-w-6xl flex-col items-start gap-12 px-4 py-20 sm:px-6 lg:flex-row lg:items-center lg:gap-20 lg:px-8">
+            <div className="w-full lg:w-1/2 lg:order-2">
+              <div className="w-full overflow-hidden rounded-2xl bg-transparent shadow-japanese transition-all duration-500 hover:shadow-japanese-hover">
+                <img
+                  src="/柔道留学支援_1.png"
+                  alt="継続的な学びと成長を支える仕組み"
+                  className="w-full h-auto object-contain mix-blend-screen"
+                  style={{ filter: 'contrast(1.1) brightness(1.1)' }}
+                />
+              </div>
+            </div>
+            <div className="w-full lg:w-1/2 lg:order-1">
+              <h2 className="font-heading text-2xl font-bold text-white md:text-3xl tracking-tight text-shadow-subtle">
+                継続的な学びと成長を支える仕組み
+              </h2>
+              <div 
+                className="whitespace-pre-line text-base text-white md:text-lg leading-relaxed mt-6"
+                dangerouslySetInnerHTML={{
+                  __html: "柔道留学斡旋支援では、留学目的・競技レベル・将来のキャリアビジョンを丁寧にヒアリングし、最適な道場・学校・生活環境を提案します。到着前の準備から滞在中のフォロー、進路相談まで、専門チームが伴走します。".replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-white">$1</strong>')
+                }}
+              />
+            </div>
+          </section>
         </div>
       </div>
 
