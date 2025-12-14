@@ -22,27 +22,28 @@ export default function JudoTourismPage() {
         subtitle="日本の本物の道場で、汗をかき、礼を学び、柔道の「空気」を全身で味わう。観光では味わえない、“稽古する旅” を。" 
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 items-start">
-          {/* 左側: 画像 */}
-          <div>
-            <div className="w-full overflow-hidden rounded-2xl bg-muted shadow-japanese transition-all duration-500 hover:shadow-japanese-hover">
-              <img
-                src="/リアル.png"
-                alt="柔道ツーリズム"
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </div>
-
-          {/* 右側: 柔道ツーリズムについて + サービスプラン */}
+      <section className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/judo_dojo.png"
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+          {/* Semi-transparent black overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
           <div className="space-y-8">
             {/* 柔道ツーリズムについて */}
             <div>
               <h2 className="font-heading text-2xl font-bold text-primary md:text-3xl tracking-tight text-shadow-subtle mb-6">
                 柔道ツーリズムについて
               </h2>
-              <div className="text-base text-muted-foreground md:text-lg leading-relaxed space-y-4">
+              <div className="text-base text-white md:text-lg leading-relaxed space-y-4">
                 <p>
                   本プログラムは、「柔道そのものを体験する」ことを目的とした柔道ツーリズムです。私たちが提供するのは、観光アクティビティではなく、<strong className="font-semibold text-primary">実際の日本の道場で稽古に参加できる環境</strong>です。
                 </p>
