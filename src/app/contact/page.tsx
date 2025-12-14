@@ -29,7 +29,7 @@ export default function ContactPage() {
                   name="name"
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border border-input px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
+                  className="mt-2 w-full rounded-lg border-2 border-black px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
                 />
               </div>
               <div>
@@ -41,7 +41,7 @@ export default function ContactPage() {
                   name="email"
                   type="email"
                   required
-                  className="mt-2 w-full rounded-lg border border-input px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
+                  className="mt-2 w-full rounded-lg border-2 border-black px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
                 />
               </div>
               <div>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                   name="request"
                   rows={6}
                   placeholder="例：柔道ツーリズムの相談で、来年春に5日間の滞在を検討しています"
-                  className="mt-2 w-full rounded-lg border border-input px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
+                  className="mt-2 w-full rounded-lg border-2 border-black px-4 py-3 text-sm focus:border-primary focus:outline-none bg-background"
                   required
                 />
               </div>
