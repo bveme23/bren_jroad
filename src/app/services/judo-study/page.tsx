@@ -66,11 +66,11 @@ export default function JudoStudyPage() {
 
       <section className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="/judo_help.png"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full min-w-full min-h-full object-contain"
             aria-hidden="true"
           />
           {/* Semi-transparent black overlay */}
