@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function JudoTourismPage() {
   return (
-    <div className="space-y-16 pb-16 relative">
+    <div className="pb-16 relative">
       <PageHeader 
         title="柔道ツーリズム" 
         subtitle="日本の本物の道場で、汗をかき、礼を学び、柔道の「空気」を全身で味わう。観光では味わえない、“稽古する旅” を。" 
