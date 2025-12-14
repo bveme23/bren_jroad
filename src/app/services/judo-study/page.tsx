@@ -22,12 +22,27 @@ export default function JudoStudyPage() {
       />
 
       <div className="relative">
-        <TextWithImage
-          layout="image-left"
-          title="継続的な学びと成長を支える仕組み"
-          text="柔道留学斡旋支援では、留学目的・競技レベル・将来のキャリアビジョンを丁寧にヒアリングし、最適な道場・学校・生活環境を提案します。到着前の準備から滞在中のフォロー、進路相談まで、専門チームが伴走します。"
-          image="/柔道留学支援_1.png"
-        />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/judo_study.png"
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+          {/* Semi-transparent black overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <TextWithImage
+            layout="image-left"
+            title="継続的な学びと成長を支える仕組み"
+            text="柔道留学斡旋支援では、留学目的・競技レベル・将来のキャリアビジョンを丁寧にヒアリングし、最適な道場・学校・生活環境を提案します。到着前の準備から滞在中のフォロー、進路相談まで、専門チームが伴走します。"
+            image="/柔道留学支援_1.png"
+          />
+        </div>
       </div>
 
       <JapaneseDivider />
