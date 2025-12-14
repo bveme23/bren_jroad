@@ -44,11 +44,11 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-start gap-0.5 group">
+          <Link href="/" className="flex flex-col items-center gap-0.5 group">
             <img
               src="/logo.png?v=2"
               alt="J-Road Logo"
-              className="h-16 w-auto transition-transform group-hover:scale-105 -mb-1"
+              className="h-20 w-auto transition-transform group-hover:scale-105 -mb-1"
             />
             <div className={`hidden sm:block text-[10px] tracking-widest ${isScrolled ? 'text-slate-500' : 'text-white/70'}`}>
               柔道の道
