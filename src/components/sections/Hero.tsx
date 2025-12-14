@@ -69,7 +69,7 @@ export function Hero({ title, subtitle, backgroundImage, ctaPrimary, ctaSecondar
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8 animate-fade-in"
+          className="mb-2 animate-fade-in"
         >
           <div className="inline-block relative">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
