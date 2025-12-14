@@ -22,7 +22,7 @@ export default function JudoTourismPage() {
         subtitle="日本の本物の道場で、汗をかき、礼を学び、柔道の「空気」を全身で味わう。観光では味わえない、“稽古する旅” を。" 
       />
 
-      <section className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+      <section className="relative w-full">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
@@ -36,7 +36,7 @@ export default function JudoTourismPage() {
         </div>
         
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="space-y-8">
             {/* 柔道ツーリズムについて */}
             <div>
