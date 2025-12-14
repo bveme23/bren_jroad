@@ -295,7 +295,7 @@ export const translations: Record<SupportedLang, {
     'nav.thoughts': 'Our Vision for Judo',
     
     // Hero
-    'hero.title': 'Connecting the World and Japan,\nTransforming Judo',
+    'hero.title': 'Connecting Japan with the world and changing the world of judo',
     'hero.subtitle': 'A new sports tourism experience where judoka and judo enthusiasts from around the world can safely experience authentic judo and Japanese culture in Japan.',
     'hero.cta.services': 'View Services',
     'hero.cta.contact': 'Get in Touch',
@@ -576,7 +576,7 @@ export const translations: Record<SupportedLang, {
     'nav.thoughts': 'Notre Vision du Judo',
     
     // Hero
-    'hero.title': 'Relier le Monde et le Japon,\nTransformer le Judo',
+    'hero.title': 'Relier le Japon au monde et changer le monde du judo',
     'hero.subtitle': 'Une nouvelle expérience de tourisme sportif où les judokas et les passionnés de judo du monde entier peuvent découvrir en toute sécurité le judo authentique et la culture japonaise au Japon.',
     'hero.cta.services': 'Voir les Services',
     'hero.cta.contact': 'Nous Contacter',
