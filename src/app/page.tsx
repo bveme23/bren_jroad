@@ -15,7 +15,7 @@ export default function Home() {
       <Hero
         title={t('hero.title')}
         subtitle={t('hero.subtitle')}
-        backgroundImage="/judo_players.jpg"
+        backgroundImage="/akita.jpg"
         ctaPrimary={{ text: t('hero.cta.services'), link: '/services/judo-tourism' }}
         ctaSecondary={{ text: t('hero.cta.contact'), link: '/contact' }}
       />
